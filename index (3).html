@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Islamabad Model College for Boys, Humak — IMCB LMS</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f6fb5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#f4f8fc;--card:#fff;--text:#1f2a37;--muted:#6b7785;--primary:#2f6fb5;--soft:#e6f0fa;--border:#dbe5ef;--error:#c0392b;--ok:#2e8b57;--warnbg:#fdf1d8;--warn:#8a5a00}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;justify-content:center}
+#root{width:100%;max-width:420px;min-height:100vh;display:flex;flex-direction:column}
+.pad{padding:24px 20px;flex:1;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.logo{width:48px;height:48px;border-radius:12px;object-fit:contain;display:block;background:#fff}
+.brand b{font-size:18px}.brand small{display:block;color:var(--muted);font-size:12px}
+h1{font-size:22px;margin:0 0 6px}h2{font-size:17px;margin:18px 0 10px}
+p.sub{color:var(--muted);margin:0 0 18px;font-size:14px;line-height:1.5}
+.steps{display:flex;gap:6px;margin-bottom:20px}.steps span{height:5px;flex:1;border-radius:3px;background:var(--border)}.steps span.on{background:var(--primary)}
+.choice{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;font:inherit;color:inherit;cursor:pointer}
+.choice.sel{border-color:var(--primary);background:var(--soft)}.choice .ic{font-size:26px}.choice b{display:block;font-size:16px}.choice small{color:var(--muted)}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font:inherit;background:var(--card);color:var(--text)}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary)}
+input[type=file]{padding:9px;font-size:13px}
+.btn{margin-top:20px;width:100%;padding:14px;border:0;border-radius:12px;background:var(--primary);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}.btn.small{margin-top:0;width:auto;padding:9px 16px;font-size:13px}
+.btn.del{background:transparent;color:var(--error);border:1px solid var(--error)}
+.btn.ghost{background:var(--soft);color:var(--primary)}
+.link{background:none;border:0;color:var(--primary);font:inherit;margin-top:12px;cursor:pointer;padding:6px;align-self:flex-start}
+.err{color:var(--error);font-size:13px;margin-top:8px;min-height:18px}.okmsg{color:var(--ok);font-size:13px;margin-top:8px}
+.info{background:var(--warnbg);color:var(--warn);padding:10px 12px;border-radius:10px;font-size:13px;margin:8px 0}
+.tabs2{display:flex;background:var(--soft);border-radius:12px;padding:4px;margin-bottom:8px}
+.tabs2 button{flex:1;border:0;background:none;padding:10px;border-radius:9px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}
+.tabs2 button.on{background:var(--card);color:var(--primary)}
+.otp{letter-spacing:8px;text-align:center;font-size:22px}
+.credit{margin-top:auto;padding-top:24px;text-align:center;font-size:11.5px;color:var(--muted);line-height:1.6}.credit b{color:var(--text)}
+.top{background:var(--primary);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.top b{font-size:17px}.top small{opacity:.85;display:block;font-size:12px}
+.top button{background:rgba(255,255,255,.18);border:0;color:#fff;border-radius:8px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}
+.content{padding:16px 16px 90px;flex:1;display:flex;flex-direction:column}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.muted{color:var(--muted);font-size:13px}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;background:var(--soft);color:var(--primary);white-space:nowrap}
+.pill.q{background:var(--warnbg);color:var(--warn)}.pill.ok{background:#dff3e7;color:#1f6b40}
+.bar{height:9px;border-radius:6px;background:var(--border);overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--ok)}.bar i.low{background:var(--error)}
+.big{font-size:32px;font-weight:700}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tabbar{position:fixed;bottom:0;width:100%;max-width:420px;background:var(--card);border-top:1px solid var(--border);display:flex;padding-bottom:env(safe-area-inset-bottom,0)}
+.tabbar button{flex:1;min-width:0;border:0;background:none;padding:9px 2px 11px;font:inherit;font-size:10.5px;color:var(--muted);cursor:pointer;position:relative}
+.tabbar button span{display:block;font-size:19px}.tabbar button.on{color:var(--primary);font-weight:600}
+.badge{position:absolute;top:3px;left:55%;background:var(--error);color:#fff;border-radius:10px;font-size:10px;padding:1px 6px;font-style:normal}
+.tog{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:10px}.tog:last-child{border:0}
+.sw{width:44px;height:26px;border-radius:14px;background:var(--border);position:relative;border:0;cursor:pointer;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.15s}
+.sw.on{background:var(--primary)}.sw.on::after{left:21px}
+.chk{width:22px;height:22px}.empty{text-align:center;color:var(--muted);padding:26px 0;font-size:14px}
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#1f2a37;color:#fff;padding:12px 16px;border-radius:12px;font-size:13px;max-width:380px;z-index:9;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.loading{margin:auto;color:var(--muted)}
+.desc{white-space:pre-wrap;font-size:14px;line-height:1.5;margin:8px 0}
+.file{display:inline-block;background:var(--soft);color:var(--primary);padding:6px 12px;border-radius:10px;font-size:13px;text-decoration:none;margin:4px 6px 4px 0;word-break:break-all}
+.media{width:100%;border-radius:10px;margin:8px 0;background:#000;max-height:280px;object-fit:contain}
+.avatar{object-fit:cover;width:72px;height:72px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:30px;font-weight:700;margin:0 auto 10px}
+.sub-box{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:10px}
+hr.sep{border:0;border-top:1px solid var(--border);margin:12px 0}
+
+.tabs2{overflow-x:auto}
+.tabs2 button{white-space:nowrap;padding:10px 12px}
+.att-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.att-row:last-child{border:0}
+.seg{display:flex;gap:4px;flex:none}
+.seg-b{border:1px solid var(--border);background:var(--card);color:var(--muted);border-radius:8px;padding:7px 8px;font:inherit;font-size:12px;cursor:pointer}
+.seg-b.on.P{background:#dff3e7;color:#1f6b40;border-color:#1f6b40;font-weight:600}
+.seg-b.on.A{background:#fbe3e0;color:#a5281b;border-color:#a5281b;font-weight:600}
+.seg-b.on.L{background:var(--warnbg);color:var(--warn);border-color:var(--warn);font-weight:600}
+.pill.no{background:#fbe3e0;color:#a5281b}
+
+/* Responsive layout: phone-first, with a wider workspace on tablets/desktops. */
+html,body{min-height:100%;width:100%;overflow-x:hidden}
+body{align-items:stretch}
+#root{max-width:100%;width:100%;min-width:0}
+.top{position:sticky;top:0;z-index:5}
+.content{width:100%;min-width:0}
+.card,.sub-box{min-width:0;overflow-wrap:anywhere}
+.row{min-width:0;flex-wrap:wrap}
+.row>*{min-width:0;max-width:100%}
+button,input,select,textarea{max-width:100%}
+.file{max-width:100%;overflow-wrap:anywhere}
+.media{display:block}
+.tabbar{left:0;right:0;margin:0 auto;max-width:100%;}
+@media (min-width:700px){
+  body{justify-content:center}
+  #root{max-width:1100px;box-shadow:0 0 36px rgba(31,42,55,.08);min-height:100vh}
+  .top{padding:18px 28px}
+  .content{padding:24px 28px 110px}
+  .pad{padding:34px 30px;max-width:620px;width:100%;margin:0 auto}
+  .tabbar{max-width:1100px}
+  .tabbar button{font-size:12px;padding:11px 8px 13px}
+  .tabbar button span{font-size:21px}
+  .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{padding:18px}
+}
+@media (min-width:1000px){
+  .content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:12px}
+  .content>h2,.content>.empty,.content>.info,.content>.desc{grid-column:1/-1}
+  .content>.card{margin-bottom:0}
+  .content>.grid2{grid-column:1/-1}
+}
+@media (max-width:380px){
+  .pad{padding:18px 14px}
+  .content{padding:12px 10px 88px}
+  .top{padding:12px}
+  .top b{font-size:15px}
+  .tabbar button{font-size:9.5px}
+  .seg{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div id="root"><div class="loading">Loading…</div></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, query, where, orderBy, limit, serverTimestamp, writeBatch, increment, runTransaction } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-functions.js";
+
+/* ============ SETTINGS ============ */
+const firebaseConfig = {
+  apiKey: "AIzaSyBh5sDGrX8x7dPBUVoGaMM4CiCzYIHr6Lo",
+  authDomain: "imcb-lms.firebaseapp.com",
+  projectId: "imcb-lms",
+  storageBucket: "imcb-lms.firebasestorage.app",
+  messagingSenderId: "23711413398",
+  appId: "1:23711413398:web:1b70bf7db60875a8fa7eb7"
+};
+// EmailJS (real OTP emails). No demo OTP is used.
+const EMAILJS = { service: "service_eo4jaft", template: "template_38cdw9i", key: "wiTyd9NR8_DD3rLz3" };
+// Cloudinary (file uploads: notes, pictures, videos, student Word files). Free, no card needed.
+const CLOUDINARY = { cloud: "ntazp7sl", preset: "imcb_lms" };
+const VERSION = 'v3.6';
+const SUPERVISOR_LIMIT = 5;
+const SCHOOL_CLASSES = ['Class 6','Class 7','Class 8','Class 9','Class 10'];
+const YEAR_CLASSES = ['1st Year','2nd Year'];
+const ALL_CLASSES = SCHOOL_CLASSES.concat(YEAR_CLASSES);
+const SECTIONS = ['A','B','C'];
+const needsSection = g => SCHOOL_CLASSES.includes(g);
+const normSec = (g,sec) => needsSection(g) ? (sec||'') : '';
+const classLabel = (g,sec) => g ? (g + (sec ? ' – Section '+sec : '')) : '';
+const classKey = (g,sec) => String(g||'').replace(/\s+/g,'') + (sec ? '_'+sec : '');
+const CLASS_LIST = [];
+SCHOOL_CLASSES.forEach(g=>SECTIONS.forEach(sec=>CLASS_LIST.push({grade:g,section:sec,key:classKey(g,sec),label:classLabel(g,sec)})));
+YEAR_CLASSES.forEach(g=>CLASS_LIST.push({grade:g,section:'',key:classKey(g,''),label:g}));
+const ek = e => String(e||'').toLowerCase().replace(/\./g,',');   // safe key for e-mails inside a map
+const todayISO = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const validRoll = r => /^[A-Za-z0-9-]{1,10}$/.test(r||'');
+const classErr = (g,sec) => !ALL_CLASSES.includes(g) ? 'Please select a class.' : ((needsSection(g) && !SECTIONS.includes(sec)) ? 'Please select a section.' : null);
+const cmpStudents = (a,b) => (ALL_CLASSES.indexOf(a.grade)-ALL_CLASSES.indexOf(b.grade)) || (a.section||'').localeCompare(b.section||'') || ((parseInt(a.roll,10)||1e9)-(parseInt(b.roll,10)||1e9)) || (a.name||'').localeCompare(b.name||'');
+const TEACHER_LIMIT = 30;   // students are unlimited
+const MAX_FILE_MB = 10, MAX_VIDEO_MB = 100;
+/* ================================== */
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const functions = getFunctions(app);
+const startLectureQuizCall = httpsCallable(functions, 'startLectureQuiz');
+const submitLectureQuizCall = httpsCallable(functions, 'submitLectureQuiz');
+let lectureQuizInterval = null;
+
+const S = { screen:'loading', pick:null, role:null, mode:'login', err:'', msg:'', busy:false,
+  me:null, tab:'home', tasks:[], notifs:[], materials:[], settings:{late:true,showAtt:true,timed:true},
+  students:[], teachers:[], signed:new Set(), att:{}, subs:[], notifReads:{}, counters:{teachers:0}, unsubs:[], present:{},
+  otp:null, otpAction:null, pending:null, needOtp:false, creating:false, age:null, grade:null, studentRequests:[], days:[], supervisors:[], work:null, attDate:null, editing:null, editingT:null,
+  form:{type:'Assignment'}, files:{}, openTask:null, timedQuiz:null, working:false, notifFirst:true };
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => { const d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; };
+const attr = s => esc(s).replace(/"/g,'&quot;');
+const isGmail = e => /^[a-z0-9._%+-]+@gmail\.com$/i.test(e||'');
+const pct = a => (!a||!a.t)?0:Math.round(a.p*100/a.t);
+const ms = t => (t&&t.toMillis)?t.toMillis():Date.now();
+const fmt = t => new Date(ms(t)).toLocaleString();
+function fbMsg(e){
+  const c=e.code||'';
+  if(['auth/invalid-credential','auth/wrong-password','auth/user-not-found','auth/invalid-email'].includes(c)) return 'Incorrect Gmail or password.';
+  if(c==='auth/email-already-in-use') return 'This Gmail is already registered. Please log in.';
+  if(c==='auth/weak-password') return 'Password is too weak (minimum 6 characters).';
+  if(c==='auth/too-many-requests') return 'Too many attempts. Please try again later.';
+  if(c==='auth/network-request-failed') return 'No internet connection.';
+  if(c==='permission-denied') return 'Permission denied. Please check the Firestore rules.';
+  return e.message||'Something went wrong.';
+}
+function toast(t){ const d=document.createElement('div'); d.className='toast'; d.textContent=t; document.body.appendChild(d); setTimeout(()=>d.remove(),4500); }
+const credit = () => '<div class="credit"><b>Supervised by Atif Naeem Fayyaz</b><br><b>Created by IMCB Students</b><br>Credits: Syed Abdullah Shah, M.Talha Shahbaz,<br>Syed Hasaan, Touheed Hussnain, M.Ehtisam<br><span style="opacity:.7">IMCB LMS '+VERSION+'</span></div>';
+const roleName = r => r==='supervisor'?'Supervisor':(r==='teacher'?'Teacher':'Student');
+const brand = () => '<div class="brand"><img class="logo" src="icon-192.png" alt="IMCB Logo"><div><b>IMCB LMS</b><small>Islamabad Model College for Boys, Humak</small><small>Learning Management System</small></div></div>';
+const go = s => { S.screen=s; S.err=''; S.msg=''; render(); };
+
+/* form helpers: every input is stored in S.form so re-rendering never loses what the user typed */
+const val = k => (S.form[k]===undefined||S.form[k]===null)?'':S.form[k];
+const inp = (k,ph,type) => '<input type="'+(type||'text')+'" placeholder="'+attr(ph||'')+'" value="'+attr(val(k))+'" oninput="A.f(\''+k+'\',this.value)">';
+const area = (k,ph,rows) => '<textarea rows="'+(rows||4)+'" placeholder="'+attr(ph||'')+'" oninput="A.f(\''+k+'\',this.value)">'+esc(val(k))+'</textarea>';
+const fileIn = (k,accept) => '<input type="file" '+(accept?'accept="'+accept+'" ':'')+'onchange="A.pickFile(\''+k+'\',this)">'+(S.files[k]?'<div class="muted" style="margin-top:6px">Selected: '+esc(S.files[k].name)+' ('+(S.files[k].size/1048576).toFixed(1)+' MB)</div>':'');
+const fileLink = (u,n) => u?'<a class="file" href="'+attr(u)+'" target="_blank" rel="noopener">📎 '+esc(n||'Open file')+'</a>':'';
+const ainp = (k,ph,type,ac) => '<input type="'+(type||'text')+'" autocomplete="'+(ac||'off')+'" placeholder="'+attr(ph||'')+'" value="'+attr(val(k))+'" oninput="A.f(\''+k+'\',this.value)">';
+function classSel(gk,sk){
+  const g=val(gk), sec=val(sk);
+  const options=S.me && S.me.role==='teacher' && ['taskGrade','materialGrade'].includes(gk) ? [S.me.grade].filter(Boolean) : ALL_CLASSES;
+  let h='<label>Class</label><select onchange="A.setClass(\''+gk+'\',\''+sk+'\',this.value)"><option value="">Select class</option>'+options.map(c=>'<option value="'+c+'" '+(g===c?'selected':'')+'>'+c+'</option>').join('')+'</select>';
+  if(needsSection(g)) h+='<label>Section</label><select onchange="A.f(\''+sk+'\',this.value)"><option value="">Select section</option>'+SECTIONS.map(x=>'<option value="'+x+'" '+(sec===x?'selected':'')+'>Section '+x+'</option>').join('')+'</select>';
+  return h;
+}
+function subTabs(list,key){
+  const cur=val(key)||list[0][0];
+  return '<div class="tabs2">'+list.map(x=>'<button class="'+(cur===x[0]?'on':'')+'" onclick="A.sub(\''+key+'\',\''+x[0]+'\')">'+x[1]+'</button>').join('')+'</div>';
+}
+
+/* ---------- file upload (Cloudinary) ---------- */
+async function uploadFile(file){
+  if(!CLOUDINARY.cloud || !CLOUDINARY.preset) throw new Error('File upload is not set up yet. Please add the Cloudinary settings.');
+  const fd=new FormData(); fd.append('file',file); fd.append('upload_preset',CLOUDINARY.preset);
+  const r=await fetch('https://api.cloudinary.com/v1_1/'+CLOUDINARY.cloud+'/auto/upload',{method:'POST',body:fd});
+  if(!r.ok){ let m='Upload failed.'; try{ const j=await r.json(); if(j.error&&j.error.message) m='Upload failed: '+j.error.message; }catch(x){} throw new Error(m); }
+  const j=await r.json();
+  return { url:j.secure_url, name:file.name, kind:j.resource_type==='video'?'video':(j.resource_type==='image'?'image':'note') };
+}
+
+/* ---------- OTP (EmailJS) ---------- */
+async function sendOtpMail(email){
+  if(!EMAILJS.service || !EMAILJS.template || !EMAILJS.key){
+    throw new Error('Real OTP email service is not configured.');
+  }
+  const a=new Uint32Array(1); crypto.getRandomValues(a);
+  const code=String(100000 + (a[0] % 900000));
+  const r=await fetch('https://api.emailjs.com/api/v1.0/email/send',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({service_id:EMAILJS.service,template_id:EMAILJS.template,user_id:EMAILJS.key,template_params:{to_email:email,otp:code,email:email}})});
+  if(!r.ok){
+    let detail='';
+    try{ const j=await r.json(); detail=j.text||j.error||''; }catch(e){}
+    throw new Error('Could not send the OTP email. '+(detail?'EmailJS: '+detail:'Please check your EmailJS service/template settings.'));
+  }
+  S.otp={code, exp:Date.now()+600000, tries:0, sent:Date.now(), email};
+}
+function checkOtp(v){
+  const o=S.otp;
+  if(!o) return 'Please request a new OTP.';
+  if(Date.now()>o.exp) return 'This OTP has expired. Please request a new one.';
+  if(o.tries>=5) return 'Too many wrong attempts. Please request a new OTP.';
+  if(v!==o.code){ o.tries++; return 'Wrong OTP. Please try again.'; }
+  S.otp=null; return null;
+}
+
+/* ---------- render ---------- */
+let dirty=false;
+function refresh(){
+  if(S.screen!=='app') return;
+  const a=document.activeElement;
+  if(a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)){ dirty=true; return; }  // do not disturb typing
+  render();
+}
+document.addEventListener('focusout',()=>{ if(dirty){ dirty=false; setTimeout(()=>{ if(S.screen==='app') refresh(); },400); } });
+
+function render(){
+  const r=$('root'); let h=''; const s=S.screen;
+  if(s==='loading') h='<div class="loading">Loading…</div>';
+  else if(s==='role'){
+    h='<div class="pad">'+brand()+'<div class="steps"><span class="on"></span><span></span><span></span></div>'+
+    '<h1>Welcome!</h1><p class="sub">How would you like to log in?</p>'+
+    '<button class="choice '+(S.pick==='teacher'?'sel':'')+'" onclick="A.pickRole(\'teacher\')"><span class="ic">👩‍🏫</span><span><b>Teacher</b><small>Manage courses, tasks and attendance</small></span></button>'+
+    '<button class="choice '+(S.pick==='student'?'sel':'')+'" onclick="A.pickRole(\'student\')"><span class="ic">🧑‍🎓</span><span><b>Student</b><small>Courses, assignments and quizzes</small></span></button>'+
+    '<button class="choice '+(S.pick==='supervisor'?'sel':'')+'" onclick="A.pickRole(\'supervisor\')"><span class="ic">🛡️</span><span><b>Supervisor</b><small>Full control of the whole LMS</small></span></button>'+
+    '<button class="btn" '+(S.pick?'':'disabled')+' onclick="A.next()">Continue</button>'+credit()+'</div>';
+  }
+  else if(s==='age'){
+    h='<div class="pad">'+brand()+'<div class="steps"><span class="on"></span><span class="on"></span><span></span></div>'+
+    '<h1>Verify your age</h1><p class="sub">Enter your age to open the correct login screen.</p>'+
+    '<label>Your age (years)</label><input id="age" type="number" inputmode="numeric" placeholder="e.g. 22">'+
+    '<div class="err">'+esc(S.err)+'</div><button class="btn" onclick="A.verifyAge()">Verify</button>'+
+    '<button class="link" onclick="A.go(\'role\')">← Back</button>'+credit()+'</div>';
+  }
+  else if(s==='auth'){
+    const t=S.role==='teacher', st=S.role==='student', su=S.mode==='signup';
+    h='<div class="pad">'+brand()+'<div class="steps"><span class="on"></span><span class="on"></span><span class="on"></span></div>'+
+    '<h1>'+roleName(S.role)+' '+(su?'Sign Up':'Login')+'</h1>'+
+    '<p class="sub">'+(t?'Use your Gmail address. Teacher signup is available for users above age 25.':'Use your Gmail address. We will send a one-time code (OTP) to verify it.')+'</p>'+
+    '<div class="tabs2"><button class="'+(!su?'on':'')+'" onclick="A.setMode(\'login\')">Login</button><button class="'+(su?'on':'')+'" onclick="A.setMode(\'signup\')">Sign Up</button></div>'+
+    (su?'<label>Full name</label>'+ainp('a_name','Your full name','text','name'):'')+
+    (su&&st?classSel('a_grade','a_section')+'<label>Roll number</label>'+ainp('a_roll','e.g. 12','text','off')+'<div class="muted" style="margin-top:6px">Your request will go to the incharge teacher of your class and section.</div>':'')+
+    (su&&t?classSel('a_grade','a_section')+'<div class="muted" style="margin-top:6px">This class and section will be assigned as your in-charge class.</div>':'')+
+    '<label>Gmail address</label>'+ainp('a_email','name@gmail.com','email','username')+
+    '<label>Password</label>'+ainp('a_pw','At least 6 characters','password',su?'new-password':'current-password')+
+    '<div class="err">'+esc(S.err)+'</div><div class="okmsg">'+esc(S.msg)+'</div>'+
+    '<button class="btn" '+(S.busy?'disabled':'')+' onclick="A.submitAuth()">'+(S.busy?'Please wait…':(su?'Create account':'Login'))+'</button>'+
+    (!su?'<button class="link" onclick="A.go(\'forgot\')">Forgot password?</button>':'')+
+    '<button class="link" onclick="A.back()">← Back</button>'+credit()+'</div>';
+  }
+  else if(s==='forgot'){
+    h='<div class="pad">'+brand()+'<h1>Forgot password</h1><p class="sub">Enter your Gmail. We will email you a secure link to set a new password. Check your Spam folder too.</p>'+
+    '<label>Gmail address</label><input id="femail" type="email" placeholder="name@gmail.com">'+
+    '<div class="err">'+esc(S.err)+'</div><div class="okmsg">'+esc(S.msg)+'</div>'+
+    '<button class="btn" '+(S.busy?'disabled':'')+' onclick="A.sendReset()">Send reset email</button>'+
+    '<button class="link" onclick="A.go(\'auth\')">← Back to login</button>'+credit()+'</div>';
+  }
+  else if(s==='otp'){
+    h='<div class="pad">'+brand()+'<h1>Enter OTP</h1><p class="sub">A 6-digit code was sent to '+esc(S.otp?S.otp.email:(S.pending&&S.pending.email)||'')+'.</p>'+
+
+    '<label>6-digit code</label><input id="otp" class="otp" maxlength="6" inputmode="numeric" placeholder="••••••">'+
+    '<div class="err">'+esc(S.err)+'</div><div class="okmsg">'+esc(S.msg)+'</div>'+
+    '<button class="btn" '+(S.busy?'disabled':'')+' onclick="A.verifyOtp()">'+(S.busy?'Please wait…':'Verify OTP')+'</button>'+
+    '<button class="link" onclick="A.resend()">Resend OTP</button>'+
+    '<button class="link" onclick="A.cancelOtp()">← Cancel</button>'+credit()+'</div>';
+  }
+  else if(s==='app') h=renderApp();
+  r.innerHTML=h;
+}
+
+/* ---------- data helpers ---------- */
+const T = id => S.tasks.find(t=>t.id===id);
+const inMyClass = x => !x.grade || (x.grade===S.me.grade && (x.section||'')===(S.me.section||''));
+const visibleTasks = () => S.me.role==='supervisor' ? S.tasks : S.tasks.filter(inMyClass);
+const visibleMaterials = () => S.me.role==='supervisor' ? S.materials : S.materials.filter(inMyClass);
+const myNotifs = () => S.notifs.filter(n=>{ if(n.to && n.to!==S.me.email) return false; if(S.me.role==='student' && n.grade && n.grade!==(S.me.grade||'')) return false; if(S.me.role==='student' && n.grade && SCHOOL_CLASSES.includes(n.grade) && (n.section||'')!==(S.me.section||'')) return false; return true; });
+const isNotifRead = n => !!S.notifReads[n.id];
+const unread = () => myNotifs().filter(n=>!isNotifRead(n)).length;
+function attStats(email){
+  let p=0,a=0,l=0; const k=ek(email);
+  S.days.forEach(d=>{ const m=d.marks&&d.marks[k]; if(m==='P')p++; else if(m==='A')a++; else if(m==='L')l++; });
+  const t=p+a+l;
+  return {p,a,l,t,pct:t?Math.round(p*100/t):0};
+}
+function stats(email){
+  const subs=S.subs.filter(x=>x.email===email);
+  let m=0,t=0,graded=0;
+  subs.forEach(x=>{ if(x.marks!=null){ const k=T(x.taskId); if(k&&k.totalMarks){ m+=x.marks; t+=k.totalMarks; graded++; } } });
+  const a=attStats(email);
+  return { avg:t?Math.round(m*100/t):null, submitted:subs.length, graded, att:a.pct, attRaw:{p:a.p,t:a.t,a:a.a,l:a.l} };
+}
+const avgTxt = a => a===null?'—':a+'%';
+
+/* ---------- app shell ---------- */
+function renderApp(){
+  const role=S.me.role, t=role!=='student', sup=role==='supervisor';
+  const tabs=sup?[['students','👥','People'],['att','📊','Attend.'],['profile','👤','Profile']]
+    :t?[['home','🏠','Home'],['tasks','📝','Tasks'],['lib','📚','Library'],['att','📊','Attend.'],['students','👥','Students'],['profile','👤','Profile']]
+      :[['home','🏠','Home'],['tasks','📝','Tasks'],['lib','📚','Library'],['progress','📈','Progress'],['alerts','🔔','Alerts'],['profile','👤','Profile']];
+  if(!tabs.some(x=>x[0]===S.tab)) S.tab=tabs[0][0];
+  let body='';
+  switch(S.tab){
+    case 'home': body=homeView(); break;
+    case 'tasks': body=t?teacherTasks():studentTasks(); break;
+    case 'lib': body=libraryView(); break;
+    case 'att': body=teacherAtt(); break;
+    case 'students': body=studentsView(); break;
+    case 'progress': body=progressView(); break;
+    case 'alerts': body=alertsView(); break;
+    case 'profile': body=profileView(); break;
+  }
+  const bar='<div class="tabbar">'+tabs.map(x=>{
+    const b=(!t&&x[0]==='alerts'&&unread()>0)?'<em class="badge">'+unread()+'</em>':(t&&x[0]==='students'&&S.studentRequests.length?'<em class="badge">'+S.studentRequests.length+'</em>':'');
+    return '<button class="'+(S.tab===x[0]?'on':'')+'" onclick="A.setTab(\''+x[0]+'\')"><span>'+x[1]+'</span>'+x[2]+b+'</button>';
+  }).join('')+'</div>';
+  const cls=S.me.grade?(' · '+S.me.grade+(S.me.section?' '+S.me.section:'')):'';
+  return '<div class="top"><div style="display:flex;align-items:center;gap:10px"><img src="icon-192.png" alt="" style="width:38px;height:38px;border-radius:50%;background:#fff;object-fit:contain"><div><b>IMCB LMS</b><small>'+esc(S.me.name)+' · '+roleName(role)+esc(cls)+'</small></div></div><button onclick="A.logout()">Logout</button></div>'+
+         '<div class="content">'+body+credit()+'</div>'+bar;
+}
+
+/* ---------- Home ---------- */
+function homeView(){
+  if(S.me.role!=='student'){
+    const pending=S.subs.filter(x=>x.marks==null).length;
+    return '<div class="grid2"><div class="card"><div class="muted">Students</div><div class="big">'+S.students.length+'</div><div class="muted">No limit</div></div>'+
+      '<div class="card"><div class="muted">Teachers</div><div class="big">'+(S.counters.teachers||0)+'<span class="muted">/'+TEACHER_LIMIT+'</span></div><div class="muted">Maximum '+TEACHER_LIMIT+'</div></div>'+
+      '<div class="card"><div class="muted">Tasks posted</div><div class="big">'+S.tasks.length+'</div></div>'+
+      '<div class="card"><div class="muted">To grade</div><div class="big">'+pending+'</div></div></div>'+
+      '<div class="info">Your in-charge responsibility is limited to '+esc(classLabel(S.me.grade,S.me.section))+'. You can teach/post subject material for other classes too, but you can mark attendance only for your in-charge class. Attendance is saved by date in Firestore.</div>';
+  }
+  const st=stats(S.me.email);
+  return (S.settings.showAtt?'<div class="card"><div class="muted">My attendance</div><div class="big">'+st.att+'%</div><div class="bar"><i class="'+(st.att<75?'low':'')+'" style="width:'+st.att+'%"></i></div><div class="muted" style="margin-top:6px">'+st.attRaw.p+' of '+st.attRaw.t+' classes attended</div></div>':'')+
+    '<div class="grid2"><div class="card"><div class="muted">Average grade</div><div class="big">'+avgTxt(st.avg)+'</div></div>'+
+    '<div class="card"><div class="muted">Submitted</div><div class="big">'+st.submitted+'<span class="muted">/'+S.tasks.length+'</span></div></div></div>'+
+    '<div class="card"><div class="muted">New alerts</div><div class="big">'+unread()+'</div></div>';
+}
+
+/* ---------- MCQ quiz helpers ---------- */
+function quizEditor(){
+  let h='<div class="info">Add up to 10 MCQs. Task-area Quiz has no timer. Lecture Quiz has 100 seconds per question and auto-advances.</div>';
+  for(let i=1;i<=10;i++){
+    h+='<div class="sub-box"><label>Question '+i+' (leave blank if unused)</label>'+inp('qq'+i,'Enter question '+i)+
+      '<label>Option A</label>'+inp('qa'+i,'Option A')+'<label>Option B</label>'+inp('qb'+i,'Option B')+
+      '<label>Option C</label>'+inp('qc'+i,'Option C')+'<label>Option D</label>'+inp('qd'+i,'Option D')+(val('type')==='Lecture Quiz'?'<label>Correct answer (kept separately from student-visible questions)</label><select onchange="A.f(\'qcorrect'+i+'\',this.value)"><option value="">Choose correct option</option>'+['A','B','C','D'].map(a=>'<option value="'+a+'" '+(val('qcorrect'+i)===a?'selected':'')+'>'+a+'</option>').join('')+'</select>':'')+'</div>';
+  }
+  return h;
+}
+function renderMcq(k){
+  const qs=Array.isArray(k.questions)?k.questions:[];
+  if(!qs.length) return '<div class="info">This quiz has no MCQ questions yet. Ask your teacher to edit it.</div>';
+  return '<div class="sub-box">'+qs.map((q,i)=>'<div style="margin:10px 0 16px"><b>'+(i+1)+'. '+esc(q.q)+'</b>'+['A','B','C','D'].map((letter,j)=>'<label style="display:flex;gap:9px;align-items:flex-start;font-weight:400;margin:9px 0"><input class="chk" style="width:18px;height:18px;flex:none;margin-top:2px" type="radio" name="mcq_'+attr(k.id)+'_'+i+'" value="'+letter+'" '+((S.form['mcq_'+k.id+'_'+i]===letter)?'checked':'')+' onchange="A.f(\'mcq_'+attr(k.id)+'_'+i+'\',this.value)"><span><b>'+letter+'.</b> '+esc(q.options[j]||'')+'</span></label>').join('')+'</div>').join('')+
+    '<button class="btn" onclick="A.submitQuiz(\''+attr(k.id)+'\')">Submit quiz</button></div>';
+}
+
+/* ---------- Tasks: teacher ---------- */
+function teacherTasks(){
+  const targetG=val('taskGrade')||S.me.grade;
+  const targetS=needsSection(targetG)?(val('taskSection')||S.me.section||''):'';
+  const lectureOptions=S.materials.filter(m=>m.grade===targetG&&(m.section||'')===targetS).map(m=>'<option value="'+attr(m.id)+'" '+(val('linkedMaterialId')===m.id?'selected':'')+'>'+esc(m.title)+'</option>').join('');
+  return '<h2 style="margin-top:4px">Post an assignment or quiz</h2><div class="card">'+
+    '<label style="margin-top:0">Title</label>'+inp('title','e.g. Chapter 3 Assignment')+
+    '<label>Course</label>'+inp('course','e.g. Computer Science')+
+    '<label>Target class</label>'+classSel('taskGrade','taskSection')+
+    '<label>Link to lecture/video (for post-lecture timed quizzes)</label><select onchange="A.f(\'linkedMaterialId\',this.value)"><option value="">Not linked</option>'+lectureOptions+'</select>'+
+    '<div class="grid2"><div><label>Type</label><select onchange="A.setTaskType(this.value)"><option '+(val('type')==='Assignment'?'selected':'')+'>Assignment</option><option '+(val('type')==='Quiz'?'selected':'')+'>Quiz</option><option '+(val('type')==='Lecture Quiz'?'selected':'')+'>Lecture Quiz</option></select></div>'+
+    '<div><label>Total marks</label>'+inp('marks','e.g. 20','number')+'</div></div>'+
+    '<label>Due date</label>'+inp('due','','date')+
+    '<label>Topic / instructions</label>'+area('desc','Write the topic and what students must do…',5)+
+    ((val('type')==='Quiz'||val('type')==='Lecture Quiz')?quizEditor():'')+
+    '<label>Attach a file (optional: notes, picture, video)</label>'+fileIn('taskAttach')+
+    '<div class="err" id="terr"></div><button class="btn" style="margin-top:8px" '+(S.working?'disabled':'')+' onclick="A.postTask()">'+(S.working?'Uploading…':'Post & notify students')+'</button></div>'+
+    '<h2>Your tasks</h2>'+(visibleTasks().length?visibleTasks().map(teacherTaskCard).join(''):'<div class="empty">Nothing posted for this class yet.</div>');
+}
+function teacherTaskCard(k){
+  const subs=S.subs.filter(x=>x.taskId===k.id), open=S.openTask===k.id;
+  let h='<div class="card"><div class="row"><b>'+esc(k.title)+'</b><span class="pill '+(k.type==='Quiz'?'q':'')+'">'+esc(k.type)+'</span></div>'+
+    '<div class="muted" style="margin:6px 0">'+esc(k.course)+' · '+esc(k.grade?classLabel(k.grade,k.section):'Legacy/global content')+' · '+k.totalMarks+' marks'+(k.due?' · Due '+esc(k.due):'')+'</div>'+
+    (k.description?'<div class="desc">'+esc(k.description)+'</div>':'')+fileLink(k.fileUrl,k.fileName)+
+    '<div class="row" style="margin-top:8px"><button class="btn small ghost" onclick="A.toggleTask(\''+k.id+'\')">'+(open?'Hide':'View')+' submissions ('+subs.length+')</button>'+
+    '<button class="btn small del" onclick="A.delTask(\''+k.id+'\')">Delete</button></div>';
+  if(open){
+    if(!subs.length) h+='<div class="sub-box muted">No submissions yet.</div>';
+    subs.forEach(x=>{
+      const mv=S.form['m_'+x.id]!==undefined?S.form['m_'+x.id]:(x.marks!=null?x.marks:''), fv=S.form['fb_'+x.id]!==undefined?S.form['fb_'+x.id]:(x.feedback||'');
+      h+='<div class="sub-box"><div class="row"><b>'+esc(x.name)+'</b>'+(x.marks!=null?'<span class="pill ok">Graded '+x.marks+'/'+k.totalMarks+'</span>':'<span class="pill q">Not graded</span>')+'</div>'+
+        '<div class="muted">'+fmt(x.at)+'</div>'+((x.answerText||x.text)?'<div class="desc"><b>Submitted answers:</b> '+esc(x.answerText||x.text)+'</div>':'')+fileLink(x.fileUrl,x.fileName)+
+        '<div class="grid2" style="margin-top:6px"><div><label>Marks (out of '+k.totalMarks+')</label>'+inp('m_'+x.id,'','number')+'</div></div>'+
+        '<label>Feedback (optional)</label>'+inp('fb_'+x.id,'Write feedback…')+
+        '<button class="btn small" style="margin-top:10px" onclick="A.saveGrade(\''+x.id+'\')">Save grade</button></div>';
+      if(S.form['m_'+x.id]===undefined) S.form['m_'+x.id]=mv;
+      if(S.form['fb_'+x.id]===undefined) S.form['fb_'+x.id]=fv;
+    });
+  }
+  return h+'</div>';
+}
+
+/* ---------- Post-lecture timed quiz ---------- */
+function renderTimedLectureQuiz(k){
+  const tq=S.timedQuiz;
+  if(!tq || tq.taskId!==k.id) return '';
+  const i=tq.index, q=(k.questions||[])[i];
+  if(!q) return '<div class="info">Submitting your timed quiz…</div>';
+  const key='tq_'+k.id+'_'+i;
+  return '<div class="sub-box"><div class="row"><b>Question '+(i+1)+' of '+k.questions.length+'</b><span class="pill q">'+tq.remaining+'s left</span></div>'+ 
+    '<div class="bar"><i style="width:'+Math.max(0,Math.min(100,tq.remaining))+'%"></i></div>'+ 
+    '<div style="margin:14px 0"><b>'+esc(q.q)+'</b></div>'+['A','B','C','D'].map((letter,j)=>'<label style="display:flex;gap:9px;align-items:flex-start;font-weight:400;margin:9px 0"><input class="chk" style="width:18px;height:18px;flex:none;margin-top:2px" type="radio" name="'+attr(key)+'" value="'+letter+'" '+(S.form[key]===letter?'checked':'')+' onchange="A.f(\''+attr(key)+'\',this.value)"><span><b>'+letter+'.</b> '+esc(q.options[j]||'')+'</span></label>').join('')+
+    '<div class="muted">When the timer reaches zero, the next question opens automatically. Your quiz is submitted after the last question.</div>'+ 
+    '<button class="btn" onclick="A.advanceTimedQuiz(\''+attr(k.id)+'\',false)">Submit answer & next</button></div>';
+}
+function stopLectureQuizTimer(){ if(lectureQuizInterval){ clearInterval(lectureQuizInterval); lectureQuizInterval=null; } }
+function startLectureQuizTimer(){
+  stopLectureQuizTimer();
+  lectureQuizInterval=setInterval(()=>{
+    if(!S.timedQuiz){ stopLectureQuizTimer(); return; }
+    S.timedQuiz.remaining=Math.max(0,S.timedQuiz.remaining-1);
+    if(S.timedQuiz.remaining===0) A.advanceTimedQuiz(S.timedQuiz.taskId,true);
+    else render();
+  },1000);
+}
+
+/* ---------- Tasks: student ---------- */
+function studentTasks(){
+  const tasks=visibleTasks();
+  if(!tasks.length) return '<h2 style="margin-top:4px">Assignments & Quizzes</h2><div class="empty">No tasks yet. Your teacher will post them here.</div>';
+  return '<h2 style="margin-top:4px">Assignments & Quizzes</h2>'+tasks.map(k=>{
+    const sub=S.subs.find(x=>x.taskId===k.id), open=S.openTask===k.id;
+    const over=k.due && new Date(k.due+'T23:59:59')<new Date(), closed=over && !S.settings.late && !sub;
+    const graded=sub && sub.marks!=null;
+    let h='<div class="card"><div class="row"><b>'+esc(k.title)+'</b><span class="pill '+(k.type==='Quiz'?'q':'')+'">'+esc(k.type)+'</span></div>'+
+      '<div class="muted" style="margin:6px 0">'+esc(k.course)+' · '+esc(k.grade?classLabel(k.grade,k.section):'Legacy/global content')+' · '+k.totalMarks+' marks'+(k.due?' · Due '+esc(k.due):'')+'</div>'+
+      (k.description?'<div class="desc">'+esc(k.description)+'</div>':'')+fileLink(k.fileUrl,k.fileName);
+    if(graded){
+      h+='<hr class="sep"><span class="pill ok">Graded: '+sub.marks+'/'+k.totalMarks+'</span>'+(sub.feedback?'<div class="desc"><b>Feedback:</b> '+esc(sub.feedback)+'</div>':'');
+    } else if(closed){
+      h+='<hr class="sep"><span class="muted">Closed (late submissions are off)</span>';
+    } else {
+      h+='<hr class="sep">'+(sub?'<span class="pill ok">Submitted ✓</span> <span class="muted">You can edit until it is graded.</span> ':'')+
+        '<button class="btn small" style="margin-top:6px" onclick="'+(k.type==='Lecture Quiz'?'A.startTimedQuiz(\''+k.id+'\')':'A.toggleTask(\''+k.id+'\')')+'">'+(k.type==='Lecture Quiz'?(S.timedQuiz&&S.timedQuiz.taskId===k.id?'Resume timed quiz':'Start timed quiz'):(open?'Close':(sub?'Edit submission':'Write / upload answer')))+'</button>';
+      if(open){
+        if(k.type==='Lecture Quiz' && S.timedQuiz && S.timedQuiz.taskId===k.id){ h+=renderTimedLectureQuiz(k); }
+        else if(k.type==='Quiz' && Array.isArray(k.questions) && k.questions.length){
+          h+=renderMcq(k);
+        } else {
+          h+='<div class="sub-box"><label style="margin-top:0">Your answer (write here)</label>'+area('ans_'+k.id,'Type your answer…',6)+
+            '<label>Or upload your Word file (.doc, .docx) or PDF</label>'+fileIn('ans_'+k.id,'.doc,.docx,.pdf,.txt,image/*')+
+            (sub&&sub.fileUrl&&!S.files['ans_'+k.id]?'<div class="muted" style="margin-top:6px">Current file: '+fileLink(sub.fileUrl,sub.fileName)+'</div>':'')+
+            '<button class="btn" style="margin-top:12px" '+(S.working?'disabled':'')+' onclick="A.submit(\''+k.id+'\')">'+(S.working?'Uploading…':(sub?'Update submission':'Submit'))+'</button></div>';
+        }
+      }
+    }
+    return h+'</div>';
+  }).join('');
+}
+
+/* ---------- Library (notes, pictures, videos) ---------- */
+function libraryView(){
+  const t=S.me.role!=='student';
+  let h='';
+  if(t){
+    h+='<h2 style="margin-top:4px">Upload material</h2><div class="card">'+
+      '<label style="margin-top:0">Title</label>'+inp('mtitle','e.g. Lecture 2 video')+
+      '<label>Course</label>'+inp('mcourse','e.g. Computer Science')+
+      '<label>Target class</label>'+classSel('materialGrade','materialSection')+
+      '<label>Description (optional)</label>'+area('mdesc','What is this about?',3)+
+      '<label>File (video, picture, PDF, Word, notes)</label>'+fileIn('material')+
+      '<div class="muted" style="margin-top:6px">Maximum '+MAX_FILE_MB+' MB for notes/pictures, '+MAX_VIDEO_MB+' MB for videos.</div>'+
+      '<div class="err" id="merr"></div><button class="btn" style="margin-top:8px" '+(S.working?'disabled':'')+' onclick="A.postMaterial()">'+(S.working?'Uploading…':'Upload & notify students')+'</button></div><h2>Library</h2>';
+  } else h+='<h2 style="margin-top:4px">Course library</h2>';
+  const materials=visibleMaterials();
+  if(!materials.length) return h+'<div class="empty">No materials yet.</div>';
+  return h+materials.map(m=>{
+    let media='';
+    if(m.kind==='video') media='<video class="media" controls preload="metadata" src="'+attr(m.url)+'"></video>';
+    else if(m.kind==='image') media='<img class="media" style="background:none" alt="'+attr(m.title)+'" src="'+attr(m.url)+'">';
+    const icon=m.kind==='video'?'🎬':(m.kind==='image'?'🖼️':'📄');
+    const linkedQuizzes=!t?S.tasks.filter(k=>k.type==='Lecture Quiz'&&k.linkedMaterialId===m.id):[];
+    const quizButtons=linkedQuizzes.map(k=>{ const sub=S.subs.find(x=>x.taskId===k.id); return '<div class="sub-box"><div class="row"><b>Post-lecture quiz: '+esc(k.title)+'</b>'+(sub?'<span class="pill ok">Submitted</span>':'<span class="pill q">100 sec/question</span>')+'</div>'+(sub?'<div class="muted">Score: '+(sub.marks==null?'Waiting for result':sub.marks+'/'+(sub.totalMarks||k.totalMarks))+'</div>':'<button class="btn small" onclick="A.startTimedQuiz(\''+k.id+'\')">Start quiz</button>')+'</div>'; }).join('');
+    return '<div class="card"><div class="row"><b>'+icon+' '+esc(m.title)+'</b>'+(t?'<button class="btn small del" onclick="A.delMaterial(\''+m.id+'\')">Delete</button>':'')+'</div>'+
+      '<div class="muted" style="margin:4px 0">'+esc(m.course||'')+' · '+fmt(m.createdAt)+'</div>'+
+      (m.description?'<div class="desc">'+esc(m.description)+'</div>':'')+media+fileLink(m.url,m.kind==='note'?('Open / download '+(m.fileName||'file')):'Open in new tab')+quizButtons+'</div>';
+  }).join('');
+}
+
+/* ---------- Attendance (teacher: own section, supervisor: any class) ---------- */
+function attTarget(){
+  if(S.me.role==='supervisor') return CLASS_LIST.find(c=>c.key===val('attKey'))||CLASS_LIST[0];
+  if(!S.me.grade) return null;
+  return {grade:S.me.grade,section:S.me.section||'',key:classKey(S.me.grade,S.me.section),label:classLabel(S.me.grade,S.me.section)};
+}
+function attStudents(t){ return S.students.filter(x=>x.grade===t.grade&&(x.section||'')===t.section).sort(cmpStudents); }
+function teacherAtt(){
+  const t=attTarget();
+  if(!t) return '<div class="info">No class is assigned to your account yet. Please ask the supervisor to assign your class and section.</div>';
+  const date=S.attDate||todayISO(), id=t.key+'_'+date, students=attStudents(t);
+  const rec=S.days.find(d=>d.id===id);
+  if(!S.work||S.work.id!==id) S.work={id,dirty:false,saved:!!rec,marks:rec?Object.assign({},rec.marks||{}):{},total:(rec&&rec.total)?rec.total:null};
+  else if(!S.work.dirty && rec && !S.work.saved){ S.work.marks=Object.assign({},rec.marks||{}); S.work.total=rec.total||null; S.work.saved=true; }
+  const w=S.work; let P=0,Ab=0,L=0;
+  students.forEach(x=>{ const m=w.marks[ek(x.id)]||'P'; if(m==='P')P++; else if(m==='A')Ab++; else L++; });
+  const total=w.total||students.length;
+  let h='<h2 style="margin-top:4px">Attendance</h2>';
+  if(S.me.role==='supervisor') h+='<label style="margin-top:0">Class</label><select onchange="A.setAttClass(this.value)">'+CLASS_LIST.map(c=>'<option value="'+c.key+'" '+(c.key===t.key?'selected':'')+'>'+esc(c.label)+'</option>').join('')+'</select>';
+  else h+='<div class="muted">Your class: <b>'+esc(t.label)+'</b></div>';
+  h+='<label>Date</label><input type="date" value="'+attr(date)+'" max="'+todayISO()+'" onchange="A.setDate(this.value)">';
+  if(!students.length) return h+'<div class="empty">No approved students in this class yet.</div>';
+  h+='<div class="card" style="margin-top:12px"><div class="grid2"><div><div class="muted">Total students (you can edit)</div><input type="number" min="1" value="'+total+'" oninput="A.setTotal(this.value)"></div>'+
+    '<div><div class="muted">Students in app</div><div class="big">'+students.length+'</div></div></div>'+
+    '<div class="row" style="margin-top:12px;justify-content:flex-start;flex-wrap:wrap"><span class="pill ok">Present: '+P+'</span><span class="pill no">Absent: '+Ab+'</span><span class="pill q">Leave: '+L+'</span></div>'+
+    (rec?'<div class="muted" style="margin-top:8px">A record for this date is already saved. You are editing it.</div>':'')+'</div>';
+  h+='<div class="card">'+students.map(x=>{
+    const m=w.marks[ek(x.id)]||'P';
+    return '<div class="att-row"><div><b>'+esc(x.name)+'</b><div class="muted">Roll '+esc(x.roll||'—')+'</div></div><div class="seg">'+
+      [['P','Present'],['A','Absent'],['L','Leave']].map(o=>'<button class="seg-b '+(m===o[0]?'on '+o[0]:'')+'" onclick="A.mark(\''+x.id+'\',\''+o[0]+'\')">'+o[1]+'</button>').join('')+'</div></div>';
+  }).join('')+
+    '<div class="row" style="margin-top:14px"><button class="btn small ghost" onclick="A.allPresent()">All present</button><button class="btn small" onclick="A.saveAtt()">'+(w.saved?'Update attendance':'Save attendance')+'</button></div></div>';
+  h+='<h2>Attendance percentage</h2>';
+  students.forEach(x=>{
+    const a=attStats(x.id);
+    h+='<div class="card"><div class="row"><b>'+esc(x.name)+' <span class="muted">(Roll '+esc(x.roll||'—')+')</span></b><b>'+a.pct+'%</b></div><div class="bar"><i class="'+(a.pct<75?'low':'')+'" style="width:'+a.pct+'%"></i></div>'+
+      '<div class="muted" style="margin-top:6px">Present '+a.p+' · Absent '+a.a+' · Leave '+a.l+' · Days '+a.t+'</div></div>';
+  });
+  const recent=S.days.filter(d=>d.grade===t.grade&&(d.section||'')===t.section).sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,10);
+  h+='<h2>Recent records</h2>'+(recent.length?recent.map(d=>{
+    const c={P:0,A:0,L:0}; Object.values(d.marks||{}).forEach(v=>{ if(c[v]!==undefined) c[v]++; });
+    return '<div class="card"><div class="row"><div><b>'+esc(d.date)+'</b><div class="muted">Present '+c.P+' · Absent '+c.A+' · Leave '+c.L+' · Total '+(d.total||'—')+'</div></div><button class="btn small ghost" onclick="A.openDay(\''+d.date+'\')">Edit</button></div></div>';
+  }).join(''):'<div class="empty">No attendance saved yet.</div>');
+  return h;
+}
+
+/* ---------- Students, requests, teachers, supervisors ---------- */
+function studentsView(){
+  const sup=S.me.role==='supervisor';
+  if(!sup && !S.me.grade) return '<div class="info">No class is assigned to your account yet. Please ask the supervisor to assign your class and section.</div>';
+  const supReqCount=S.studentRequests.filter(x=>x.requestType==='supervisor').length;
+  const studentReqCount=S.studentRequests.filter(x=>x.requestType!=='supervisor').length;
+  const tabs=sup?[['req','Requests ('+studentReqCount+')'],['stu','Students ('+S.students.length+')'],['tch','Teachers ('+S.teachers.length+')'],['supreq','Supervisor requests ('+supReqCount+')'],['sup','Supervisors ('+S.supervisors.length+'/'+SUPERVISOR_LIMIT+')']]
+                :[['req','Requests ('+S.studentRequests.length+')'],['stu','My students ('+S.students.length+')']];
+  const cur=val('ptab')||tabs[0][0];
+  let h='<h2 style="margin-top:4px">'+(sup?'People':'My class')+'</h2>'+(sup?'':'<div class="muted" style="margin-bottom:8px">Incharge: <b>'+esc(classLabel(S.me.grade,S.me.section))+'</b></div>')+subTabs(tabs,'ptab');
+  if(cur==='req') h+=requestsView();
+  else if(cur==='stu') h+=studentListView();
+  else if(cur==='tch'&&sup) h+=teachersView();
+  else if(cur==='supreq'&&sup) h+=supervisorRequestsView();
+  else if(cur==='sup'&&sup) h+=supervisorsView();
+  else h+=requestsView();
+  return h;
+}
+function requestsView(){
+  const list=S.studentRequests.filter(r=>r.requestType!=='supervisor');
+  if(!list.length) return '<div class="empty">No pending student requests.</div>';
+  return list.map(r=>'<div class="card"><div class="row"><b>'+esc(r.name)+'</b><span class="pill">Roll '+esc(r.roll||'—')+'</span></div>'+
+    '<div class="muted" style="margin:4px 0 10px">'+esc(r.email)+'<br>'+esc(classLabel(r.grade,r.section))+'</div>'+
+    '<div class="row"><button class="btn small" onclick="A.approveStudent(\''+r.id+'\')">Approve</button><button class="btn small del" onclick="A.rejectStudent(\''+r.id+'\')">Reject</button></div></div>').join('');
+}
+function supervisorRequestsView(){
+  const list=S.studentRequests.filter(r=>r.requestType==='supervisor');
+  if(!list.length) return '<div class="empty">No pending supervisor signup requests.</div>';
+  return list.map(r=>'<div class="card"><div class="row"><b>'+esc(r.name)+'</b><span class="pill">Supervisor</span></div>'+
+    '<div class="muted" style="margin:4px 0 10px">'+esc(r.email)+'</div>'+
+    '<div class="row"><button class="btn small" onclick="A.approveSupervisor(\''+r.id+'\')">Approve</button><button class="btn small del" onclick="A.rejectSupervisor(\''+r.id+'\')">Reject</button></div></div>').join('');
+}
+function studentListView(){
+  let list=S.students.slice().sort(cmpStudents), h='';
+  if(S.me.role==='supervisor'){
+    const f=val('fClass')||'ALL';
+    h+='<label style="margin-top:0">Show class</label><select onchange="A.sub(\'fClass\',this.value)"><option value="ALL">All classes</option>'+CLASS_LIST.map(c=>'<option value="'+c.key+'" '+(f===c.key?'selected':'')+'>'+esc(c.label)+'</option>').join('')+'</select>';
+    if(f!=='ALL') list=list.filter(x=>classKey(x.grade,x.section)===f);
+  }
+  if(!list.length) return h+'<div class="empty">No students yet. Students sign up themselves and appear here after approval.</div>';
+  return h+'<div style="margin-top:12px"></div>'+list.map(studentCard).join('');
+}
+function studentCard(x){
+  if(S.editing===x.id) return '<div class="card"><b>Edit student</b><div class="muted" style="margin:4px 0">'+esc(x.id)+'</div>'+
+    '<label>Full name</label>'+inp('e_name','Full name')+'<label>Roll number</label>'+inp('e_roll','e.g. 12')+
+    (S.me.role==='supervisor'?classSel('e_grade','e_section'):'')+
+    '<div class="err" id="eerr"></div><div class="row" style="margin-top:10px"><button class="btn small" onclick="A.saveStudent(\''+x.id+'\')">Save</button><button class="btn small ghost" onclick="A.cancelEdit()">Cancel</button></div></div>';
+  const st=stats(x.id);
+  return '<div class="card"><div class="row"><b>'+esc(x.name)+'</b><span class="pill">Roll '+esc(x.roll||'—')+'</span></div>'+
+    '<div class="muted" style="margin:4px 0 8px">'+esc(x.id)+'<br>'+(x.grade?esc(classLabel(x.grade,x.section)):'Class not set (edit to set it)')+'</div>'+
+    '<div class="grid2"><div><div class="muted">Average grade</div><b>'+avgTxt(st.avg)+'</b></div><div><div class="muted">Attendance</div><b>'+st.att+'%</b></div>'+
+    '<div><div class="muted">Submitted</div><b>'+st.submitted+' / '+S.tasks.length+'</b></div><div><div class="muted">Graded</div><b>'+st.graded+'</b></div></div>'+
+    '<div class="row" style="margin-top:12px"><button class="btn small ghost" onclick="A.editStudent(\''+x.id+'\')">Edit</button><button class="btn small del" onclick="A.removeStudent(\''+x.id+'\')">Remove</button></div></div>';
+}
+function teachersView(){
+  let h='<div class="card"><b>Add a teacher</b>'+
+    '<label>Teacher name</label>'+inp('t_name','Full name')+
+    '<label>Teacher Gmail</label>'+inp('t_email','name@gmail.com','email')+
+    '<label>Teacher password</label>'+inp('t_pw','Set password (minimum 6 characters)','password')+
+    classSel('t_grade','t_section')+
+    '<div class="muted" style="margin-top:8px">This teacher becomes the incharge of the selected class and section and receives its student approval requests.</div>'+
+    '<div class="err" id="terr2"></div><button class="btn" style="margin-top:8px" '+(S.working?'disabled':'')+' onclick="A.addTeacher()">'+(S.working?'Creating…':'Add teacher account')+'</button></div>'+
+    '<h2>Teachers ('+S.teachers.length+'/'+TEACHER_LIMIT+')</h2>';
+  if(!S.teachers.length) return h+'<div class="empty">No teachers yet.</div>';
+  return h+S.teachers.map(x=>{
+    if(S.editingT===x.id) return '<div class="card"><b>Edit teacher</b><div class="muted" style="margin:4px 0">'+esc(x.email)+'</div>'+
+      '<label>Full name</label>'+inp('et_name','Full name')+classSel('et_grade','et_section')+
+      '<div class="err" id="eterr"></div><div class="row" style="margin-top:10px"><button class="btn small" onclick="A.saveTeacher(\''+x.id+'\')">Save</button><button class="btn small ghost" onclick="A.cancelEditT()">Cancel</button></div></div>';
+    return '<div class="card"><div class="row"><b>'+esc(x.name)+'</b><span class="pill">Teacher</span></div><div class="muted" style="margin:4px 0 10px">'+esc(x.email)+'<br>'+(x.grade?'Incharge: '+esc(classLabel(x.grade,x.section)):'No class assigned')+'</div>'+
+      '<div class="row"><button class="btn small ghost" onclick="A.editTeacher(\''+x.id+'\')">Edit</button><button class="btn small del" onclick="A.removeTeacher(\''+x.id+'\')">Remove</button></div></div>';
+  }).join('');
+}
+function supervisorsView(){
+  const full=S.supervisors.length>=SUPERVISOR_LIMIT;
+  let h='<div class="card"><div class="row"><b>Supervisor accounts</b><span class="pill">'+S.supervisors.length+'/'+SUPERVISOR_LIMIT+'</span></div>'+
+    '<div class="info">The first two supervisor accounts can sign up directly. Additional supervisors must be approved from the Supervisor requests tab.</div></div>'+
+    '<h2>Supervisors ('+S.supervisors.length+'/'+SUPERVISOR_LIMIT+')</h2>';
+  return h+S.supervisors.map(x=>'<div class="card"><div class="row"><b>'+esc(x.name)+(x.id===S.me.uid?' (You)':'')+'</b><span class="pill">Supervisor</span></div><div class="muted" style="margin-top:4px">'+esc(x.email)+'</div></div>').join('');
+}
+
+/* ---------- Progress (student) ---------- */
+function progressView(){
+  const st=stats(S.me.email);
+  let h='<h2 style="margin-top:4px">My progress</h2><div class="grid2"><div class="card"><div class="muted">Average grade</div><div class="big">'+avgTxt(st.avg)+'</div></div>'+
+    '<div class="card"><div class="muted">Attendance</div><div class="big">'+(S.settings.showAtt?st.att+'%':'—')+'</div></div></div>';
+  if(S.settings.showAtt) h+='<div class="card"><div class="muted">Present '+st.attRaw.p+' · Absent '+st.attRaw.a+' · Leave '+st.attRaw.l+' (of '+st.attRaw.t+' days)</div><div class="bar"><i class="'+(st.att<75?'low':'')+'" style="width:'+st.att+'%"></i></div>'+
+    (st.att<75&&st.attRaw.t>0?'<div class="info" style="margin-top:10px">Your attendance is below 75%. Please attend more classes.</div>':'')+'</div>';
+  h+='<h2>Gradebook</h2>';
+  const tasks=visibleTasks();
+  if(!tasks.length) return h+'<div class="empty">No tasks yet.</div>';
+  return h+tasks.map(k=>{
+    const sub=S.subs.find(x=>x.taskId===k.id);
+    let status='<span class="pill q">Not submitted</span>';
+    if(sub) status=sub.marks!=null?'<span class="pill ok">'+sub.marks+' / '+k.totalMarks+'</span>':'<span class="pill">Submitted, waiting for grade</span>';
+    return '<div class="card"><div class="row"><b>'+esc(k.title)+'</b>'+status+'</div><div class="muted" style="margin-top:4px">'+esc(k.type)+' · '+esc(k.course)+'</div>'+
+      (sub&&sub.feedback?'<div class="desc"><b>Feedback:</b> '+esc(sub.feedback)+'</div>':'')+'</div>';
+  }).join('');
+}
+
+/* ---------- Alerts ---------- */
+function alertsView(){
+  const list=myNotifs();
+  const unreadCount=list.filter(n=>!isNotifRead(n)).length;
+  if(!list.length) return '<h2 style="margin-top:4px">Notifications</h2><div class="empty">No notifications yet.</div>';
+  return '<div class="row"><h2 style="margin-top:4px">Notifications</h2><button class="btn small ghost" onclick="A.markNotificationsRead()">Mark all read ('+unreadCount+')</button></div>'+list.map(n=>'<div class="card"><div class="row"><div>'+esc(n.text)+'</div>'+(isNotifRead(n)?'<span class="pill">Read</span>':'<span class="pill q">New</span>')+'</div><div class="muted" style="margin-top:6px">'+fmt(n.createdAt)+'</div></div>').join('');
+}
+
+/* ---------- Profile ---------- */
+const avatarSrc = u => (u && u.indexOf('/image/upload/')>-1) ? u.replace('/image/upload/','/image/upload/c_fill,w_240,h_240,g_auto/') : (u||'');
+const LABELS={late:'Late submissions',showAtt:'Attendance visibility',timed:'Timed quizzes'};
+function profileView(){
+  const role=S.me.role, staff=role!=='student';
+  let h='<div class="card" style="text-align:center">'+(S.me.photoUrl?'<img class="avatar" alt="Profile photo" src="'+attr(avatarSrc(S.me.photoUrl))+'">':'<div class="avatar">'+esc((S.me.name||'?').trim().charAt(0).toUpperCase())+'</div>')+
+    '<div style="margin-bottom:8px"><label class="file" style="cursor:pointer;margin:0">'+(S.photoBusy?'Uploading…':'📷 '+(S.me.photoUrl?'Change photo':'Add photo'))+'<input type="file" accept="image/*" style="display:none" onchange="A.pickPhoto(this)"></label>'+(S.me.photoUrl?' <button class="link" style="margin:0" onclick="A.removePhoto()">Remove</button>':'')+'</div>'+
+    '<b style="font-size:18px">'+esc(S.me.name)+'</b><div class="muted" style="margin:4px 0 8px">'+esc(S.me.email)+'</div><span class="pill">'+roleName(role)+'</span>'+
+    (S.me.grade?'<div class="muted" style="margin-top:8px">'+(role==='teacher'?'Incharge: ':'Class: ')+esc(classLabel(S.me.grade,S.me.section))+(role==='student'&&S.me.roll?' · Roll No. '+esc(S.me.roll):'')+'</div>':'')+'</div>';
+  if(!staff){
+    const st=stats(S.me.email);
+    h+='<div class="card"><div class="row"><span>Average grade</span><b>'+avgTxt(st.avg)+'</b></div><hr class="sep"><div class="row"><span>Attendance</span><b>'+(S.settings.showAtt?st.att+'%':'—')+'</b></div><hr class="sep"><div class="row"><span>Submitted tasks</span><b>'+st.submitted+' / '+S.tasks.length+'</b></div></div>';
+  } else if(role==='supervisor') {
+    const st=S.settings, row=(k,l,d)=>'<div class="tog"><div><b>'+l+'</b><div class="muted">'+d+'</div></div><button class="sw '+(st[k]?'on':'')+'" onclick="A.toggle(\''+k+'\')"></button></div>';
+    h+='<h2>Course settings</h2><div class="card">'+row('late','Late submissions','Students can submit after the due date')+
+      row('showAtt','Attendance visibility','Students can see their attendance %')+row('timed','Timed quizzes','Quizzes have a time limit')+'</div>'+
+      '<div class="info">Students are notified whenever you change a setting.</div>';
+  } else {
+    h+='<h2>Course settings</h2><div class="info">Course-wide settings are managed by a supervisor.</div>';
+  }
+  h+='<button class="btn ghost" onclick="A.changePw()">Change password (email link)</button>';
+  return h;
+}
+
+/* ---------- live data ---------- */
+function unsubAll(){ S.unsubs.forEach(u=>u()); S.unsubs=[]; S.notifFirst=true; }
+function resetData(){
+  S.tasks=[]; S.notifs=[]; S.materials=[]; S.students=[]; S.teachers=[]; S.supervisors=[]; S.signed=new Set(); S.subs=[];
+  S.days=[]; S.studentRequests=[]; S.att={}; S.notifReads={}; S.counters={teachers:0}; S.work=null;
+}
+function subscribe(){
+  unsubAll(); resetData();
+  const role=S.me.role, sup=role==='supervisor', tch=role==='teacher', staff=role!=='student';
+  const g=S.me.grade||null, sec=S.me.section||'';
+  const on=(q,fn)=>S.unsubs.push(onSnapshot(q,fn,e=>console.warn(e)));
+  const list=s=>s.docs.map(d=>({id:d.id,...d.data()}));
+  const mergeById=(a,b)=>Array.from(new Map([...a,...b].map(x=>[x.id,x])).values()).sort((x,y)=>ms(y.createdAt)-ms(x.createdAt));
+  if(sup){
+    on(query(collection(db,'tasks'),orderBy('createdAt','desc')), s=>{ S.tasks=list(s); refresh(); });
+    on(query(collection(db,'materials'),orderBy('createdAt','desc')), s=>{ S.materials=list(s); refresh(); });
+  } else if(g){
+    on(query(collection(db,'tasks'),where('grade','==',g),where('section','==',sec),orderBy('createdAt','desc')), s=>{ S.tasks=mergeById(S.tasks.filter(x=>x.createdBy===S.me.uid),list(s)); refresh(); });
+    on(query(collection(db,'materials'),where('grade','==',g),where('section','==',sec),orderBy('createdAt','desc')), s=>{ S.materials=mergeById(S.materials.filter(x=>x.createdBy===S.me.uid),list(s)); refresh(); });
+    if(tch){
+      on(query(collection(db,'tasks'),where('createdBy','==',S.me.uid)), s=>{ S.tasks=mergeById(S.tasks.filter(x=>x.grade===g&&x.section===sec),list(s)); refresh(); });
+      on(query(collection(db,'materials'),where('createdBy','==',S.me.uid)), s=>{ S.materials=mergeById(S.materials.filter(x=>x.grade===g&&x.section===sec),list(s)); refresh(); });
+    }
+  } else { S.tasks=[]; S.materials=[]; }
+  on(collection(db,'users',S.me.uid,'notificationReads'), s=>{ S.notifReads=Object.fromEntries(s.docs.map(d=>[d.id,true])); refresh(); });
+  on(query(collection(db,'notifications'),orderBy('createdAt','desc'),limit(60)), s=>{
+    if(!S.notifFirst && !staff) s.docChanges().forEach(c=>{ if(c.type==='added'){ const n=c.doc.data(); if((!n.to||n.to===S.me.email) && (!n.grade || (n.grade===S.me.grade && (!SCHOOL_CLASSES.includes(n.grade) || (n.section||'')===(S.me.section||''))))) toast('🔔 '+n.text); } });
+    S.notifFirst=false; S.notifs=list(s); refresh();
+  });
+  on(doc(db,'settings','course'), s=>{ S.settings={late:true,showAtt:true,timed:true,...(s.data()||{})}; refresh(); });
+  on(doc(db,'meta','counters'), s=>{ S.counters=s.data()||{teachers:0}; refresh(); });
+  if(sup){
+    on(collection(db,'roster'), s=>{ S.students=list(s).sort(cmpStudents); refresh(); });
+    on(query(collection(db,'users'),where('role','==','student')), s=>{ S.signed=new Set(s.docs.map(d=>d.data().email)); refresh(); });
+    on(query(collection(db,'users'),where('role','==','teacher')), s=>{ S.teachers=list(s).sort((a,b)=>(a.name||'').localeCompare(b.name||'')); refresh(); });
+    on(query(collection(db,'users'),where('role','==','supervisor')), s=>{ S.supervisors=list(s).sort((a,b)=>(a.name||'').localeCompare(b.name||'')); refresh(); });
+    on(query(collection(db,'studentRequests'),where('status','==','pending')), s=>{ S.studentRequests=list(s).sort((a,b)=>ms(b.createdAt)-ms(a.createdAt)); refresh(); });
+    on(collection(db,'attendanceDays'), s=>{ S.days=list(s); refresh(); });
+    on(collection(db,'submissions'), s=>{ S.subs=list(s); refresh(); });
+  } else if(tch){
+    if(g){
+      const cls=[where('grade','==',g),where('section','==',sec)];
+      on(query(collection(db,'roster'),...cls), s=>{ S.students=list(s).sort(cmpStudents); refresh(); });
+      on(query(collection(db,'users'),where('role','==','student'),...cls), s=>{ S.signed=new Set(s.docs.map(d=>d.data().email)); refresh(); });
+      on(query(collection(db,'studentRequests'),where('status','==','pending'),...cls), s=>{ S.studentRequests=list(s).sort((a,b)=>ms(b.createdAt)-ms(a.createdAt)); refresh(); });
+      on(query(collection(db,'attendanceDays'),...cls), s=>{ S.days=list(s); refresh(); });
+    }
+    if(g) on(query(collection(db,'submissions'),where('grade','==',g),where('section','==',sec)), s=>{ S.subs=list(s); refresh(); });
+  } else {
+    if(g) on(query(collection(db,'attendanceDays'),where('grade','==',g),where('section','==',sec)), s=>{ S.days=list(s); refresh(); });
+    on(query(collection(db,'submissions'),where('uid','==',S.me.uid)), s=>{ S.subs=list(s); refresh(); });
+  }
+}
+async function startApp(user){
+  const snap=await getDoc(doc(db,'users',user.uid));
+  if(!snap.exists()){ await signOut(auth); S.err='Account profile not found.'; go('role'); return; }
+  const d=snap.data();
+  if(d.role==='student'){
+    const r=await getDoc(doc(db,'roster',user.email.toLowerCase()));
+    if(!r.exists()){ await signOut(auth); go('role'); toast('You are not approved yet. Please wait for your class teacher to approve your request.'); return; }
+  }
+  S.me={uid:user.uid,email:user.email.toLowerCase(),name:d.name,role:d.role,grade:d.grade||null,section:d.section||'',roll:d.roll||'',photoUrl:d.photoUrl||''};
+  if(S.me.grade){ if(!S.form.taskGrade) S.form.taskGrade=S.me.grade; if(!S.form.taskSection) S.form.taskSection=S.me.section||''; if(!S.form.materialGrade) S.form.materialGrade=S.me.grade; if(!S.form.materialSection) S.form.materialSection=S.me.section||''; }
+  S.tab=d.role==='supervisor'?'students':'home'; S.openTask=null; S.editing=null; S.editingT=null;
+  subscribe(); go('app');
+}
+async function notify(text,to,grade,section){ const data={text,to:to||null,by:S.me.name,createdAt:serverTimestamp()}; if(grade) data.grade=grade; if(grade && needsSection(grade)) data.section=section||''; await addDoc(collection(db,'notifications'),data); }
+function checkFile(f){
+  const isVideo=(f.type||'').startsWith('video/'), lim=(isVideo?MAX_VIDEO_MB:MAX_FILE_MB)*1048576;
+  if(f.size>lim) return 'File is too large (maximum '+(isVideo?MAX_VIDEO_MB:MAX_FILE_MB)+' MB).';
+  return null;
+}
+
+/* ---------- managed account creation ---------- */
+async function createManagedAuthAccount(email,password){
+  const r=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+encodeURIComponent(firebaseConfig.apiKey),{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password,returnSecureToken:true})
+  });
+  const j=await r.json();
+  if(!r.ok) throw new Error(j.error&&j.error.message==='EMAIL_EXISTS'?'This Gmail is already registered.':(j.error&&j.error.message||'Could not create the account.'));
+  return {uid:j.localId,idToken:j.idToken};
+}
+async function deleteManagedAuthAccount(idToken){
+  if(!idToken) return;
+  try{ await fetch('https://identitytoolkit.googleapis.com/v1/accounts:delete?key='+encodeURIComponent(firebaseConfig.apiKey),{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({idToken})
+  }); }catch(e){}
+}
+
+/* ---------- actions ---------- */
+window.A = {
+  go, f(k,v){ S.form[k]=v; },
+  async markNotificationsRead(){
+    const unreadItems=myNotifs().filter(n=>!isNotifRead(n)); if(!unreadItems.length) return;
+    try{ const b=writeBatch(db); unreadItems.forEach(n=>b.set(doc(db,'users',S.me.uid,'notificationReads',n.id),{notificationId:n.id,readAt:serverTimestamp()})); await b.commit(); toast('Notifications marked as read on this account.'); }catch(e){ toast(fbMsg(e)); }
+  },
+  setTaskType(v){ S.form.type=v; render(); },
+  pickRole(r){ S.pick=r; render(); },
+  next(){ if(S.pick==='supervisor'){ S.role='supervisor'; S.mode='login'; go('auth'); } else go('age'); },
+  back(){ go(S.role==='supervisor'?'role':'age'); },
+  setMode(m){ S.mode=(m==='signup')?'signup':'login'; S.err=''; S.msg=''; render(); },
+  pickFile(k,el){
+    const f=el.files&&el.files[0]; if(!f) return;
+    const bad=checkFile(f); if(bad){ toast(bad); el.value=''; return; }
+    S.files[k]=f; render();
+  },
+  verifyAge(){
+    const a=parseInt($('age').value,10);
+    if(isNaN(a)||a<5||a>100){ S.err='Please enter a valid age (5 to 100).'; return render(); }
+    S.age=a;
+    if(S.pick==='supervisor') S.role='supervisor';
+    else S.role=a>25?'teacher':'student';
+    S.mode='login'; go('auth');
+  },
+  async submitAuth(){
+    const su=S.mode==='signup';
+    const email=val('a_email').trim().toLowerCase(), pw=val('a_pw'), name=su?val('a_name').trim():'';
+    if(!isGmail(email)){ S.err='Please enter a valid Gmail address (name@gmail.com).'; return render(); }
+    if(pw.length<6){ S.err='Password must be at least 6 characters.'; return render(); }
+    if(su && name.length<2){ S.err='Please enter your full name.'; return render(); }
+    let grade=null, section='', roll='';
+    if(su && (S.role==='student' || S.role==='teacher')){
+      grade=val('a_grade'); section=val('a_section'); roll=S.role==='student'?val('a_roll').trim():'';
+      const ce=classErr(grade,section); if(ce){ S.err=ce; return render(); }
+      if(S.role==='student' && !validRoll(roll)){ S.err='Please enter your roll number (letters, numbers or -, maximum 10 characters).'; return render(); }
+      section=normSec(grade,section);
+    }
+    S.busy=true; S.err=''; render();
+    try{
+      if(su){
+        S.pending={email,pw,name,role:S.role,grade,section,roll,age:S.age||null}; S.otpAction='signup';
+        await sendOtpMail(email); S.busy=false; go('otp');
+      } else {
+        localStorage.setItem('otpPending','1'); S.needOtp=true;
+        const cred=await signInWithEmailAndPassword(auth,email,pw);
+        const fail=async m=>{ S.needOtp=false; localStorage.removeItem('otpPending'); await signOut(auth); S.busy=false; S.err=m; render(); };
+        const snap=await getDoc(doc(db,'users',cred.user.uid));
+        if(!snap.exists()){
+          const req=await getDoc(doc(db,'studentRequests',cred.user.uid));
+          if(req.exists()){
+            const rd=req.data();
+            if(rd.requestType==='supervisor') return fail(rd.status==='rejected'?'Your supervisor signup request was rejected. Please contact an existing supervisor.':'Your supervisor signup request is waiting for approval from an existing supervisor.');
+            return fail(rd.status==='rejected'?'Your signup request was rejected. Please contact your class teacher.':'Your signup request is waiting for approval from the incharge of '+classLabel(rd.grade,rd.section)+'.');
+          }
+          return fail('Account not found. It may have been removed. Please contact your teacher.');
+        }
+        const role=snap.data().role;
+        if(role!==S.role) return fail(role==='supervisor'?'This is a supervisor account. Please choose Supervisor on the first screen.':(role==='teacher'?'This is a teacher account. Please choose Teacher on the first screen.':'This is a student account. Please choose Student on the first screen.'));
+        if(role==='student'){
+          const r=await getDoc(doc(db,'roster',email));
+          if(!r.exists()) return fail('Your account is waiting for teacher approval.');
+        }
+        S.pending={email}; S.otpAction='login';
+        await sendOtpMail(email); S.busy=false; go('otp');
+      }
+    }catch(e){
+      S.needOtp=false; localStorage.removeItem('otpPending'); S.busy=false; S.err=fbMsg(e); render();
+    }
+  },
+  async verifyOtp(){
+    const v=$('otp').value.trim();
+    if(v.length!==6){ S.err='Enter the 6-digit code.'; return render(); }
+    const bad=checkOtp(v); if(bad){ S.err=bad; return render(); }
+    S.busy=true; S.err=''; render();
+    try{
+      if(S.otpAction==='signup'){
+        const p=S.pending; S.creating=true;
+        const cred=await createUserWithEmailAndPassword(auth,p.email,p.pw);
+        try{
+          await runTransaction(db, async tx=>{
+            if(p.role==='student'){
+              tx.set(doc(db,'studentRequests',cred.user.uid),{uid:cred.user.uid,name:p.name,email:p.email,grade:p.grade,section:p.section,roll:p.roll,age:p.age,status:'pending',createdAt:serverTimestamp()});
+              return;
+            }
+            if(p.role==='teacher'){
+              const cRef=doc(db,'meta','counters');
+              const c=await tx.get(cRef), n=c.exists()?(c.data().teachers||0):0;
+              if(n>=TEACHER_LIMIT) throw new Error('Teacher limit reached ('+TEACHER_LIMIT+'/'+TEACHER_LIMIT+'). No more teacher accounts can be created.');
+              tx.set(doc(db,'users',cred.user.uid),{name:p.name,email:p.email,role:'teacher',grade:p.grade,section:p.section,createdAt:serverTimestamp()});
+              tx.set(cRef,{teachers:n+1},{merge:true});
+              return;
+            }
+            if(p.role==='supervisor'){
+              const sRef=doc(db,'meta','supervisor'), sn=await tx.get(sRef);
+              const cRef=doc(db,'meta','supervisorCount'), cn=await tx.get(cRef), n=cn.exists()?(cn.data().extra||0):0;
+              if(!sn.exists()){
+                tx.set(doc(db,'users',cred.user.uid),{name:p.name,email:p.email,role:'supervisor',createdAt:serverTimestamp()});
+                tx.set(sRef,{uid:cred.user.uid});
+                return;
+              }
+              if(n>=1) {
+                tx.set(doc(db,'studentRequests',cred.user.uid),{uid:cred.user.uid,name:p.name,email:p.email,requestType:'supervisor',status:'pending',createdAt:serverTimestamp()});
+                return;
+              }
+              tx.set(doc(db,'users',cred.user.uid),{name:p.name,email:p.email,role:'supervisor',createdAt:serverTimestamp()});
+              tx.set(cRef,{extra:1},{merge:true});
+            }
+          });
+        }catch(e){ await cred.user.delete().catch(()=>{}); throw e; }
+        if(p.role==='student'){
+          const lbl=classLabel(p.grade,p.section);
+          await signOut(auth); localStorage.removeItem('otpPending'); S.creating=false; S.pending=null; S.busy=false; S.role='student'; S.mode='login'; go('auth'); S.msg='Signup submitted. The incharge teacher of '+lbl+' must approve your request before you can log in.'; render();
+        } else if(p.role==='supervisor'){
+          const pending=await getDoc(doc(db,'studentRequests',cred.user.uid));
+          if(pending.exists()){
+            await signOut(auth); localStorage.removeItem('otpPending'); S.creating=false; S.pending=null; S.busy=false; S.role='supervisor'; S.mode='login'; go('auth'); S.msg='Supervisor signup submitted. An existing supervisor must approve your request before you can log in.'; render();
+          } else {
+            S.creating=false; S.pending=null; S.busy=false; await startApp(cred.user);
+          }
+        } else {
+          S.creating=false; S.pending=null; S.busy=false; await startApp(cred.user);
+        }
+      } else {
+        S.needOtp=false; localStorage.removeItem('otpPending'); S.busy=false; await startApp(auth.currentUser);
+      }
+    }catch(e){
+      S.creating=false; S.busy=false; S.otp=null; go('auth'); S.err=fbMsg(e); render();
+    }
+  },
+  async resend(){
+    if(S.otp && Date.now()-S.otp.sent<30000){ S.err='Please wait 30 seconds before requesting another OTP.'; return render(); }
+    try{ await sendOtpMail(S.pending.email); S.err=''; S.msg='A new OTP was sent.'; }catch(e){ S.err=e.message; }
+    render();
+  },
+  async cancelOtp(){
+    S.otp=null; S.needOtp=false; localStorage.removeItem('otpPending');
+    if(auth.currentUser) await signOut(auth);
+    go('auth');
+  },
+  async sendReset(){
+    const e=$('femail').value.trim().toLowerCase();
+    if(!isGmail(e)){ S.err='Please enter a valid Gmail address.'; return render(); }
+    S.busy=true; S.err=''; render();
+    try{ await sendPasswordResetEmail(auth,e); S.msg='If this Gmail is registered, a reset link has been sent. Check Inbox and Spam.'; }
+    catch(x){ S.err=fbMsg(x); }
+    S.busy=false; render();
+  },
+  async pickPhoto(el){
+    const f=el.files&&el.files[0]; if(!f) return;
+    if(!(f.type||'').startsWith('image/')){ toast('Please choose a picture (JPG or PNG).'); el.value=''; return; }
+    if(f.size>5*1048576){ toast('Picture is too large (maximum 5 MB).'); el.value=''; return; }
+    S.photoBusy=true; render();
+    try{
+      const up=await uploadFile(f);
+      await updateDoc(doc(db,'users',S.me.uid),{photoUrl:up.url});
+      S.me.photoUrl=up.url; toast('Profile photo updated.');
+    }catch(e){ toast(fbMsg(e)); }
+    S.photoBusy=false; render();
+  },
+  async removePhoto(){
+    if(!confirm('Remove your profile photo?')) return;
+    try{ await updateDoc(doc(db,'users',S.me.uid),{photoUrl:''}); S.me.photoUrl=''; toast('Photo removed.'); }catch(e){ toast(fbMsg(e)); }
+    render();
+  },
+  async changePw(){ try{ await sendPasswordResetEmail(auth,S.me.email); toast('A password reset link was sent to '+S.me.email); }catch(e){ toast(fbMsg(e)); } },
+  async logout(){ stopLectureQuizTimer(); S.timedQuiz=null; unsubAll(); await signOut(auth); resetData(); S.me=null; S.pick=null; S.role=null; S.form={type:'Assignment'}; S.files={}; S.editing=null; S.editingT=null; S.work=null; S.attDate=null; go('role'); },
+  setTab(x){ S.tab=x; S.openTask=null; S.editing=null; S.editingT=null; render(); },
+  toggleTask(id){
+    S.openTask=(S.openTask===id)?null:id;
+    const sub=S.subs.find(x=>x.taskId===id);
+    if(S.me.role==='student' && sub && S.form['ans_'+id]===undefined) S.form['ans_'+id]=sub.text||'';
+    render();
+  },
+
+  /* teacher: tasks */
+  async postTask(){
+    const title=(S.form.title||'').trim(), course=(S.form.course||'').trim(), total=Number(S.form.marks), type=S.form.type||'Assignment';
+    const er=m=>{ const e=$('terr'); if(e) e.textContent=m; };
+    if(!title||!course){ return er('Please enter a title and a course.'); }
+    if(!(total>0)){ return er('Please enter the total marks (more than 0).'); }
+    S.working=true; render();
+    try{
+      let up=null; if(S.files.taskAttach) up=await uploadFile(S.files.taskAttach);
+      const targetGrade=S.form.taskGrade||S.me.grade||''; const targetSection=needsSection(targetGrade)?(S.form.taskSection||S.me.section||''):'';
+      if(!targetGrade) throw new Error('Please select a target class.'); if(needsSection(targetGrade)&&!targetSection) throw new Error('Please select a target section.');
+      const linkedMaterial=S.materials.find(m=>m.id===S.form.linkedMaterialId && m.grade===targetGrade && (m.section||'')===targetSection);
+      const data={type,title,course,grade:targetGrade,section:targetSection,totalMarks:total,due:S.form.due||'',description:(S.form.desc||'').trim(),linkedMaterialId:linkedMaterial?linkedMaterial.id:'',linkedMaterialTitle:linkedMaterial?linkedMaterial.title:'',by:S.me.name,createdBy:S.me.uid,createdAt:serverTimestamp()};
+      let secureAnswerKey=[];
+      if(type==='Quiz' || type==='Lecture Quiz') {
+        data.questions=[];
+        for(let i=1;i<=10;i++){ const q=(S.form['qq'+i]||'').trim(); if(!q) continue; const options=['a','b','c','d'].map(x=>(S.form['q'+x+i]||'').trim()); if(options.some(x=>!x)) throw new Error('Please fill all four options for MCQ '+i+'.'); data.questions.push({q,options}); if(type==='Lecture Quiz'){ const correct=S.form['qcorrect'+i]; if(!['A','B','C','D'].includes(correct)) throw new Error('Choose the correct answer for MCQ '+i+'.'); secureAnswerKey.push(correct); } }
+        if(!data.questions.length) throw new Error('Please add at least one MCQ question.');
+      }
+      if(up){ data.fileUrl=up.url; data.fileName=up.name; }
+      const taskRef=await addDoc(collection(db,'tasks'),data);
+      if(type==='Lecture Quiz') await setDoc(doc(db,'quizKeys',taskRef.id),{taskId:taskRef.id,answers:secureAnswerKey,grade:targetGrade,section:targetSection,createdBy:S.me.uid,createdAt:serverTimestamp()});
+      await notify('New '+type.toLowerCase()+' posted in '+course+': '+title+(data.due?' (due '+data.due+')':''),null,data.grade,data.section);
+      ['title','course','taskGrade','taskSection','linkedMaterialId','marks','due','desc',...Array.from({length:10},(_,i)=>['qq','qa','qb','qc','qd','qcorrect'].map(p=>p+(i+1))).flat()].forEach(k=>delete S.form[k]); delete S.files.taskAttach;
+      toast('Posted. Students were notified.');
+    }catch(e){ toast(fbMsg(e)); }
+    S.working=false; render();
+  },
+  async delTask(id){
+    const k=T(id); if(!confirm('Delete "'+(k?k.title:'this task')+'"?')) return;
+    try{ await deleteDoc(doc(db,'tasks',id)); if(k) await notify('A task was removed: '+k.title); }catch(e){ toast(fbMsg(e)); }
+  },
+  async submitQuiz(taskId){
+    const k=T(taskId); if(!k || !Array.isArray(k.questions) || !k.questions.length){ toast('Quiz questions are unavailable.'); return; }
+    const answers=[];
+    for(let i=0;i<k.questions.length;i++){ const a=S.form['mcq_'+taskId+'_'+i]; if(!['A','B','C','D'].includes(a)){ toast('Please answer question '+(i+1)+'.'); return; } answers.push(a); }
+    const old=S.subs.find(x=>x.taskId===taskId); if(old&&old.marks!=null){ toast('This quiz has already been graded.'); return; }
+    try{
+      await setDoc(doc(db,'submissions',taskId+'_'+S.me.uid),{taskId,uid:S.me.uid,email:S.me.email,name:S.me.name,grade:k.grade||S.me.grade||'',section:k.section||S.me.section||'',answers,answerText:answers.map((a,i)=>(i+1)+'. '+a).join('\n'),at:serverTimestamp()});
+      S.openTask=null; toast('Quiz submitted. Your teacher can now review your answers.'); render();
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async startTimedQuiz(taskId){
+    const k=T(taskId); if(!k || k.type!=='Lecture Quiz') return;
+    const existing=S.subs.find(x=>x.taskId===taskId);
+    if(existing){ toast('This timed quiz has already been submitted.'); return; }
+    if(S.timedQuiz && S.timedQuiz.taskId!==taskId && !confirm('Leave the current timed quiz? Its current answers may be lost.')) return;
+    try{
+      stopLectureQuizTimer();
+      const r=await startLectureQuizCall({taskId});
+      const startedAtMs=Number(r.data.startedAtMs||Date.now());
+      const elapsed=Math.max(0,Math.floor((Date.now()-startedAtMs)/1000));
+      const count=(k.questions||[]).length;
+      if(!count) throw new Error('This lecture quiz has no questions.');
+      const index=Math.min(count-1,Math.floor(elapsed/100));
+      S.timedQuiz={taskId,index,answers:Array(count).fill(null),remaining:Math.max(0,100-(elapsed%100)),startedAtMs};
+      S.openTask=taskId; S.tab='tasks'; startLectureQuizTimer(); render();
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async advanceTimedQuiz(taskId,expired){
+    const tq=S.timedQuiz, k=T(taskId); if(!tq || tq.taskId!==taskId || !k) return;
+    const key='tq_'+taskId+'_'+tq.index, chosen=S.form[key];
+    if(!expired && !['A','B','C','D'].includes(chosen)){ toast('Select an answer first, or wait for the timer to move on.'); return; }
+    tq.answers[tq.index]=['A','B','C','D'].includes(chosen)?chosen:null;
+    if(tq.index+1<(k.questions||[]).length){ tq.index++; tq.remaining=100; startLectureQuizTimer(); render(); return; }
+    stopLectureQuizTimer(); S.working=true; render();
+    try{
+      const result=await submitLectureQuizCall({taskId,answers:tq.answers});
+      S.timedQuiz=null; S.openTask=null;
+      toast('Timed quiz submitted. Score: '+result.data.marks+'/'+result.data.totalMarks+'.');
+    }catch(e){ toast(fbMsg(e)); }
+    S.working=false; render();
+  },
+
+  async saveGrade(subId){
+    const x=S.subs.find(z=>z.id===subId); if(!x) return;
+    const k=T(x.taskId), m=Number(S.form['m_'+subId]);
+    if(S.form['m_'+subId]===''||isNaN(m)||m<0||m>k.totalMarks){ toast('Enter marks between 0 and '+k.totalMarks+'.'); return; }
+    try{
+      await updateDoc(doc(db,'submissions',subId),{marks:m,feedback:(S.form['fb_'+subId]||'').trim(),gradedAt:serverTimestamp()});
+      await notify('Your '+k.type.toLowerCase()+' "'+k.title+'" was graded: '+m+'/'+k.totalMarks,x.email);
+      toast('Grade saved.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+
+  /* teacher: library */
+  async postMaterial(){
+    const title=(S.form.mtitle||'').trim(), course=(S.form.mcourse||'').trim(), f=S.files.material;
+    const er=m=>{ const e=$('merr'); if(e) e.textContent=m; };
+    if(!title) return er('Please enter a title.');
+    if(!f) return er('Please choose a file to upload.');
+    S.working=true; render();
+    try{
+      const targetGrade=S.form.materialGrade||S.me.grade||''; const targetSection=needsSection(targetGrade)?(S.form.materialSection||S.me.section||''):'';
+      if(!targetGrade) throw new Error('Please select a target class.'); if(needsSection(targetGrade)&&!targetSection) throw new Error('Please select a target section.');
+      const up=await uploadFile(f);
+      await addDoc(collection(db,'materials'),{title,course,grade:targetGrade,section:targetSection,description:(S.form.mdesc||'').trim(),url:up.url,fileName:up.name,kind:up.kind,by:S.me.name,createdBy:S.me.uid,createdAt:serverTimestamp()});
+      await notify('New material added'+(course?' in '+course:'')+': '+title,null,targetGrade,targetSection);
+      ['mtitle','mcourse','materialGrade','materialSection','mdesc'].forEach(k=>delete S.form[k]); delete S.files.material;
+      toast('Uploaded. Students were notified.');
+    }catch(e){ toast(fbMsg(e)); }
+    S.working=false; render();
+  },
+  async delMaterial(id){ if(!confirm('Delete this material?')) return; try{ await deleteDoc(doc(db,'materials',id)); }catch(e){ toast(fbMsg(e)); } },
+
+  /* teacher: students + attendance + settings */
+  async removeStudent(id){
+    const x=S.students.find(z=>z.id===id);
+    if(!confirm('Remove '+(x?x.name:id)+'? Their access to the LMS will be removed.')) return;
+    try{
+      const b=writeBatch(db);
+      b.delete(doc(db,'roster',id));
+      if(x&&x.uid){ b.delete(doc(db,'users',x.uid)); b.delete(doc(db,'studentRequests',x.uid)); }
+      await b.commit(); toast('Student removed.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async addTeacher(){
+    if(S.me.role!=='supervisor'){ toast('Only a supervisor can add teachers.'); return; }
+    const name=val('t_name').trim(), email=val('t_email').trim().toLowerCase(), pw=val('t_pw'), grade=val('t_grade'); let section=val('t_section'); const er=$('terr2');
+    if(name.length<2){ er.textContent='Please enter the teacher name.'; return; }
+    if(!isGmail(email)){ er.textContent='Please enter a valid Gmail address.'; return; }
+    if(pw.length<6){ er.textContent='Teacher password must be at least 6 characters.'; return; }
+    const ce=classErr(grade,section); if(ce){ er.textContent=ce; return; } section=normSec(grade,section);
+    if(S.teachers.some(x=>x.email===email)){ er.textContent='This teacher is already added.'; return; }
+    if((S.counters.teachers||0)>=TEACHER_LIMIT){ er.textContent='Teacher limit reached ('+TEACHER_LIMIT+').'; return; }
+    S.working=true; render();
+    let created=null;
+    try{
+      created=await createManagedAuthAccount(email,pw);
+      await runTransaction(db,async tx=>{
+        const cRef=doc(db,'meta','counters'); const c=await tx.get(cRef); const n=c.exists()?(c.data().teachers||0):0;
+        if(n>=TEACHER_LIMIT) throw new Error('Teacher limit reached ('+TEACHER_LIMIT+'/'+TEACHER_LIMIT+').');
+        tx.set(cRef,{teachers:n+1},{merge:true});
+        tx.set(doc(db,'users',created.uid),{name,email,role:'teacher',grade,section,createdAt:serverTimestamp()});
+      });
+      ['t_name','t_email','t_pw','t_grade','t_section'].forEach(k=>delete S.form[k]);
+      toast('Teacher account created.');
+    }catch(e){
+      if(created) await deleteManagedAuthAccount(created.idToken);
+      toast(fbMsg(e));
+    }
+    S.working=false; render();
+  },
+  async approveSupervisor(id){
+    if(S.me.role!=='supervisor') return;
+    const req=S.studentRequests.find(x=>x.id===id && x.requestType==='supervisor'); if(!req) return;
+    if(S.supervisors.length>=SUPERVISOR_LIMIT){ toast('Supervisor limit reached ('+SUPERVISOR_LIMIT+').'); return; }
+    try{
+      await runTransaction(db,async tx=>{
+        const rRef=doc(db,'studentRequests',id), r=await tx.get(rRef);
+        if(!r.exists() || r.data().status!=='pending' || r.data().requestType!=='supervisor') throw new Error('This supervisor request has already been processed.');
+        const d=r.data();
+        const cRef=doc(db,'meta','supervisorCount'), c=await tx.get(cRef), n=c.exists()?(c.data().extra||0):0;
+        if(n>=SUPERVISOR_LIMIT-1) throw new Error('Supervisor limit reached ('+SUPERVISOR_LIMIT+').');
+        tx.set(doc(db,'users',d.uid),{name:d.name,email:d.email,role:'supervisor',createdAt:serverTimestamp()});
+        tx.set(cRef,{extra:n+1},{merge:true});
+        tx.update(rRef,{status:'approved',approvedBy:S.me.uid,approvedByName:S.me.name,approvedAt:serverTimestamp()});
+        tx.set(doc(collection(db,'notifications')),{text:'Your supervisor signup was approved by '+S.me.name+'. You can now log in.',to:d.email,createdAt:serverTimestamp(),by:S.me.name});
+      });
+      toast('Supervisor approved.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async rejectSupervisor(id){
+    if(S.me.role!=='supervisor') return;
+    const req=S.studentRequests.find(x=>x.id===id && x.requestType==='supervisor'); if(!req) return;
+    if(!confirm('Reject supervisor signup for '+req.name+'?')) return;
+    try{
+      await runTransaction(db,async tx=>{
+        const rRef=doc(db,'studentRequests',id), r=await tx.get(rRef);
+        if(!r.exists() || r.data().status!=='pending' || r.data().requestType!=='supervisor') throw new Error('This supervisor request has already been processed.');
+        const d=r.data();
+        tx.update(rRef,{status:'rejected',rejectedBy:S.me.uid,rejectedByName:S.me.name,rejectedAt:serverTimestamp()});
+        tx.set(doc(collection(db,'notifications')),{text:'Your supervisor signup was rejected by '+S.me.name+'. Please contact an existing supervisor for more information.',to:d.email,createdAt:serverTimestamp(),by:S.me.name});
+      });
+      toast('Supervisor request rejected.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async approveStudent(id){
+    if(S.me.role==='student') return;
+    const req=S.studentRequests.find(x=>x.id===id); if(!req) return;
+    if(S.students.some(z=>z.grade===req.grade&&(z.section||'')===(req.section||'')&&String(z.roll)===String(req.roll))){
+      toast('Roll number '+req.roll+' is already used in '+classLabel(req.grade,req.section)+'. Please check before approving.'); return;
+    }
+    try{
+      await runTransaction(db,async tx=>{
+        const rRef=doc(db,'studentRequests',id), r=await tx.get(rRef);
+        if(!r.exists() || r.data().status!=='pending') throw new Error('This request has already been processed.');
+        const d=r.data();
+        tx.set(doc(db,'roster',d.email),{name:d.name,email:d.email,grade:d.grade,section:d.section,roll:d.roll,uid:d.uid,addedBy:S.me.name,createdAt:serverTimestamp()});
+        tx.set(doc(db,'users',d.uid),{name:d.name,email:d.email,role:'student',grade:d.grade,section:d.section,roll:d.roll,createdAt:serverTimestamp()});
+        tx.update(rRef,{status:'approved',approvedBy:S.me.uid,approvedByName:S.me.name,approvedAt:serverTimestamp()});
+        tx.set(doc(collection(db,'notifications')),{text:'Your signup was approved by '+S.me.name+'. Welcome to IMCB LMS!',to:d.email,createdAt:serverTimestamp(),by:S.me.name});
+      });
+      toast('Student approved.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async rejectStudent(id){
+    if(S.me.role==='student') return;
+    const req=S.studentRequests.find(x=>x.id===id); if(!req) return;
+    if(!confirm('Reject '+req.name+'?')) return;
+    try{
+      await runTransaction(db,async tx=>{
+        const rRef=doc(db,'studentRequests',id), r=await tx.get(rRef);
+        if(!r.exists() || r.data().status!=='pending') throw new Error('This request has already been processed.');
+        const d=r.data();
+        tx.update(rRef,{status:'rejected',rejectedBy:S.me.uid,rejectedByName:S.me.name,rejectedAt:serverTimestamp()});
+        tx.set(doc(collection(db,'notifications')),{text:'Your signup was rejected by '+S.me.name+'. Please contact your class teacher for more information.',to:d.email,createdAt:serverTimestamp(),by:S.me.name});
+      });
+      toast('Student request rejected.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  async removeTeacher(uid){
+    const x=S.teachers.find(z=>z.id===uid);
+    if(!confirm('Remove teacher '+(x?x.name:'')+'? They will lose access immediately.')) return;
+    try{
+      const b=writeBatch(db); b.delete(doc(db,'users',uid)); b.set(doc(db,'meta','counters'),{teachers:increment(-1)},{merge:true}); await b.commit();
+      toast('Teacher removed.');
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  setDate(v){ if(!v) return; S.attDate=v; S.work=null; render(); },
+  setAttClass(v){ S.form.attKey=v; S.work=null; render(); },
+  mark(email,v){ if(!S.work) return; S.work.marks[ek(email)]=v; S.work.dirty=true; render(); },
+  allPresent(){ const t=attTarget(); if(!t||!S.work) return; attStudents(t).forEach(x=>{ S.work.marks[ek(x.id)]='P'; }); S.work.dirty=true; render(); },
+  setTotal(v){ if(!S.work) return; S.work.total=(v===''?null:Math.max(1,Math.floor(Number(v))||1)); S.work.dirty=true; },
+  openDay(d){ S.attDate=d; S.work=null; render(); window.scrollTo(0,0); },
+  async saveAtt(){
+    const t=attTarget(); if(!t||!S.work) return;
+    const students=attStudents(t); if(!students.length){ toast('No students to mark.'); return; }
+    const date=S.attDate||todayISO(), marks={};
+    students.forEach(x=>{ marks[ek(x.id)]=S.work.marks[ek(x.id)]||'P'; });
+    const total=S.work.total||students.length;
+    try{
+      await setDoc(doc(db,'attendanceDays',t.key+'_'+date),{grade:t.grade,section:t.section,date,marks,total,by:S.me.name,updatedAt:serverTimestamp()});
+      S.work.dirty=false; S.work.saved=true; toast('Attendance saved for '+date+'.'); render();
+    }catch(e){ toast(fbMsg(e)); }
+  },
+  sub(k,v){ S.form[k]=v; render(); },
+  setClass(gk,sk,v){ S.form[gk]=v; S.form[sk]=''; render(); },
+  editStudent(id){
+    const x=S.students.find(z=>z.id===id); if(!x) return;
+    S.editing=id; S.form.e_name=x.name||''; S.form.e_roll=x.roll||''; S.form.e_grade=x.grade||''; S.form.e_section=x.section||''; render();
+  },
+  cancelEdit(){ S.editing=null; render(); },
+  async saveStudent(id){
+    const x=S.students.find(z=>z.id===id); if(!x) return;
+    const sup=S.me.role==='supervisor', er=$('eerr');
+    const name=val('e_name').trim(), roll=val('e_roll').trim();
+    if(name.length<2){ er.textContent='Please enter the student name.'; return; }
+    if(!validRoll(roll)){ er.textContent='Please enter a valid roll number.'; return; }
+    let grade=x.grade||'', section=x.section||'';
+    if(sup){ grade=val('e_grade'); section=val('e_section'); const ce=classErr(grade,section); if(ce){ er.textContent=ce; return; } section=normSec(grade,section); }
+    if(S.students.some(z=>z.id!==id&&z.grade===grade&&(z.section||'')===section&&String(z.roll)===roll)){ er.textContent='This roll number is already used in '+classLabel(grade,section)+'.'; return; }
+    try{
+      const data=sup?{name,roll,grade,section}:{name,roll};
+      const b=writeBatch(db);
+      b.update(doc(db,'roster',id),data);
+      if(x.uid) b.update(doc(db,'users',x.uid),data);
+      await b.commit(); S.editing=null; toast('Student updated.'); render();
+    }catch(e){ er.textContent=fbMsg(e); }
+  },
+  editTeacher(uid){
+    const x=S.teachers.find(z=>z.id===uid); if(!x) return;
+    S.editingT=uid; S.form.et_name=x.name||''; S.form.et_grade=x.grade||''; S.form.et_section=x.section||''; render();
+  },
+  cancelEditT(){ S.editingT=null; render(); },
+  async saveTeacher(uid){
+    const name=val('et_name').trim(), grade=val('et_grade'); let section=val('et_section'); const er=$('eterr');
+    if(name.length<2){ er.textContent='Please enter the teacher name.'; return; }
+    const ce=classErr(grade,section); if(ce){ er.textContent=ce; return; } section=normSec(grade,section);
+    try{ await updateDoc(doc(db,'users',uid),{name,grade,section}); S.editingT=null; toast('Teacher updated.'); render(); }
+    catch(e){ er.textContent=fbMsg(e); }
+  },
+  async addSupervisor(){
+    if(S.me.role!=='supervisor'){ toast('Only a supervisor can add supervisors.'); return; }
+    const name=val('s_name').trim(), email=val('s_email').trim().toLowerCase(), pw=val('s_pw'), er=$('serr2');
+    if(name.length<2){ er.textContent='Please enter the supervisor name.'; return; }
+    if(!isGmail(email)){ er.textContent='Please enter a valid Gmail address.'; return; }
+    if(pw.length<6){ er.textContent='Password must be at least 6 characters.'; return; }
+    if(S.supervisors.length>=SUPERVISOR_LIMIT){ er.textContent='Supervisor limit reached ('+SUPERVISOR_LIMIT+').'; return; }
+    S.working=true; render();
+    let created=null;
+    try{
+      created=await createManagedAuthAccount(email,pw);
+      await runTransaction(db,async tx=>{
+        const cRef=doc(db,'meta','supervisorCount'), c=await tx.get(cRef), n=c.exists()?(c.data().extra||0):0;
+        if(n>=SUPERVISOR_LIMIT-1) throw new Error('Supervisor limit reached ('+SUPERVISOR_LIMIT+').');
+        tx.set(cRef,{extra:n+1});
+        tx.set(doc(db,'users',created.uid),{name,email,role:'supervisor',createdAt:serverTimestamp()});
+      });
+      ['s_name','s_email','s_pw'].forEach(k=>delete S.form[k]);
+      toast('Supervisor account created.');
+    }catch(e){
+      if(created) await deleteManagedAuthAccount(created.idToken);
+      toast(fbMsg(e));
+    }
+    S.working=false; render();
+  },
+  async toggle(k){
+    const v=!S.settings[k];
+    try{ await setDoc(doc(db,'settings','course'),{[k]:v},{merge:true}); await notify('Setting updated: '+LABELS[k]+' is now '+(v?'ON':'OFF')); }catch(e){ toast(fbMsg(e)); }
+  },
+
+  /* student: submit answer (text and/or Word file) */
+  async submit(taskId){
+    const text=(S.form['ans_'+taskId]||'').trim(), f=S.files['ans_'+taskId], old=S.subs.find(x=>x.taskId===taskId);
+    if(!text && !f && !(old&&old.fileUrl)){ toast('Please write your answer or upload a file.'); return; }
+    S.working=true; render();
+    try{
+      const task=T(taskId); const data={taskId,uid:S.me.uid,email:S.me.email,name:S.me.name,grade:task?task.grade:(S.me.grade||''),section:task?(task.section||''):(S.me.section||''),text,at:serverTimestamp()};
+      if(f){ const up=await uploadFile(f); data.fileUrl=up.url; data.fileName=up.name; }
+      else if(old&&old.fileUrl){ data.fileUrl=old.fileUrl; data.fileName=old.fileName; }
+      await setDoc(doc(db,'submissions',taskId+'_'+S.me.uid),data);
+      delete S.files['ans_'+taskId]; S.openTask=null;
+      toast('Submitted successfully.');
+    }catch(e){ toast(fbMsg(e)); }
+    S.working=false; render();
+  }
+};
+
+/* ---------- start ---------- */
+onAuthStateChanged(auth, async user=>{
+  if(S.needOtp || S.creating) return;               // login/signup flow in progress
+  if(!user){ if(S.screen==='loading'||S.screen==='app') go('role'); return; }
+  if(localStorage.getItem('otpPending')==='1'){ await signOut(auth); localStorage.removeItem('otpPending'); go('role'); return; }
+  if(!S.me) await startApp(user);
+});
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+render();
+</script>
+</body>
+</html>
